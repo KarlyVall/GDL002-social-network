@@ -1,6 +1,6 @@
-console.log('tudo bem');
-function registrar() {
-    console.log('diste click');
+
+//funcion registrar nuevas usuarias
+const register = () => {
     let email =document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
@@ -20,7 +20,8 @@ function registrar() {
       });
 }
 
-function ingreso (){
+//funcion ingresar usuarias existentes
+const login =  () => {
     let newEmail =document.getElementById('new-email').value;
     let newPassword = document.getElementById('new-password').value;
 
@@ -36,7 +37,7 @@ function ingreso (){
       
       
 }
-function observador () {
+const observer = () => {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             console.log('existe usuario');
@@ -61,9 +62,9 @@ function observador () {
       
 }
 
-observador();
+observer();
 
-function show(){
+const show = () => {
     let content = document.getElementById('conteiner')
     content.innerHTML = `
     <p>Solo usuarios registrados pueden verlo </p>
@@ -71,7 +72,7 @@ function show(){
     `;
 }
 
-function closeSession(){
+const closeSession = () => {
     firebase.auth().signOut()
     .then(function (){
         console.log('saliendo...');
@@ -83,7 +84,7 @@ function closeSession(){
     })
 }
 
-function verify () {
+const verify = () => {
     var user = firebase.auth().currentUser;
 
 user.sendEmailVerification().then(function() {
@@ -97,16 +98,54 @@ user.sendEmailVerification().then(function() {
 });
 }
 
- authAccountFacebook () {
-    const provider = new firebase.auth.FacebookAuthProvider();
 
-    firebase.auth().singInWithPopup(provider).then(result => {
-        $('#avatar').attr('src', result.user.photoURL)
-        $('.modal').modal('close')
-        Materialize.toast('Bienvenido ${result.user.displayName} !! ',4000)
-    })
-    .catch(error => {
-        console.error(error)
-        Materialize.toast('Error al autenticarse con facebook: ${error} ',4000)
-    })
+
+let loginGoogle = () => {
+    console.log("holi");
+    
+    var provider = new firebase.auth.GoogleAuthProvider();
+    console.log(provider, "algo");
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      console.log(errorCode);
+      var errorMessage = error.message;
+      console.log(errorMessage);
+      // The email of the user's account used.
+      var email = error.email;
+      console.log(email);
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      console.log(credential);
+      // ...
+    });
+  }
+  
+
+ function authAccountFacebook () {
+    const provider = new firebase.auth.FacebookAuthProvider()
+    console.log(provider);
+
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
 }
