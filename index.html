@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hola Firebase</title>
+</head>
+<body>
+    <h1>Hola</h1>
+    <h2>Nuevos Usuarios</h2>
+    <input id="email" type="email" placeholder="Ingresa email">
+    <input id="password" type="password" placeholder="Ingresa contraseña">
+    <button onclick="registrar()">Enviar</button>
+
+    <h2>Ingreso de usuarios(ya existentes)</h2>
+    <input id="new-email" type="email" placeholder="Ingresa email">
+    <input id="new-password" type="password" placeholder="Ingresa contraseña">
+    <button onclick="ingreso()">Acceder</button>
+
+    <button onclick="authAccountFacebook()">Ingresa con Facebook</button>
+
+    <div id="conteiner">
+        
+    </div>
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -18,23 +36,7 @@
         };
         firebase.initializeApp(config);
       </script>
-</head>
-<body>
-    <h1>Holi</h1>
-    <h2>Nuevos Usuarios</h2>
-    <input id="email" type="email" placeholder="Ingresa email">
-    <input id="password" type="password" placeholder="Ingresa contraseña">
-    <button onclick="registrar()">Enviar</button>
-
-    <h2>Ingreso de usuarios(ya existentes)</h2>
-    <input id="new-email" type="email" placeholder="Ingresa email">
-    <input id="new-password" type="password" placeholder="Ingresa contraseña">
-    <button onclick="ingreso()">Acceder</button>
-    <script src="main.js"> </script>
-
-    <div id="conteiner">
-        
-    </div>
+      <script src="main.js"> </script>
 
 </body>
 </html>
