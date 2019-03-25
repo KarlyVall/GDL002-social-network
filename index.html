@@ -5,36 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hola Firebase</title>
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyCb8jXtsA4ngkEk2blR5GDhtUoQoErYfJQ",
-          authDomain: "compartiendo-sonrisas.firebaseapp.com",
-          databaseURL: "https://compartiendo-sonrisas.firebaseio.com",
-          projectId: "compartiendo-sonrisas",
-          storageBucket: "compartiendo-sonrisas.appspot.com",
-          messagingSenderId: "804727554993"
-        };
-        firebase.initializeApp(config);
-      </script>
 </head>
+
 <body>
     <h1>Holi</h1>
     <h2>Nuevos Usuarios</h2>
+    
+    <input id="user" type="user" placeholder="Ingresa tu nombre de usuario">
     <input id="email" type="email" placeholder="Ingresa email">
     <input id="password" type="password" placeholder="Ingresa contraseña">
-    <button onclick="registrar()">Enviar</button>
+    <button onclick="loginGoogle()">Ingresa con Google</button>
+    <button onclick="register()">Enviar</button>
 
     <h2>Ingreso de usuarios(ya existentes)</h2>
     <input id="new-email" type="email" placeholder="Ingresa email">
     <input id="new-password" type="password" placeholder="Ingresa contraseña">
-    <button onclick="ingreso()">Acceder</button>
-    <script src="main.js"> </script>
+    <button onclick="login()">Acceder</button>
+    
 
     <div id="conteiner">
         
     </div>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
 
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-functions.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCb8jXtsA4ngkEk2blR5GDhtUoQoErYfJQ",
+        authDomain: "compartiendo-sonrisas.firebaseapp.com",
+        databaseURL: "https://compartiendo-sonrisas.firebaseio.com",
+        projectId: "compartiendo-sonrisas",
+        storageBucket: "compartiendo-sonrisas.appspot.com",
+        messagingSenderId: "804727554993"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="main.js"> </script>
 </body>
 </html>
