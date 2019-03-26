@@ -1,44 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hola Firebase</title>
-</head>
+    <title>Share a Smile</title>
+    
+    <!-- Compressed CSS Foundation -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css" integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og= sha384-gP4DhqyoT9b1vaikoHi9XQ8If7UNLO73JFOOlQV1RATrA7D0O7TjJZifac6NwPps sha512-AKwIib1E+xDeXe0tCgbc9uSvPwVYl6Awj7xl0FoaPFostZHOuDQ1abnDNCYtxL/HWEnVOMrFyf91TDgLPi9pNg==" crossorigin="anonymous">
+    <!-- Compressed JavaScript Foundatio -->
+   
+  </head>
+<header>
+
+</header>
 
 <body>
-    <h1>Hola</h1>
-    <h2>Nuevos Usuarios</h2>
-    
-    <input id="user" type="user" placeholder="Ingresa tu nombre de usuario">
-    <input id="email" type="email" placeholder="Ingresa email">
-    <input id="password" type="password" placeholder="Ingresa contraseña">
-    <button onclick="loginGoogle()">Ingresa con Google</button>
-    <button onclick="authAccountFacebook()">Ingresa con Facebook</button>
-    <button onclick="register()">Enviar</button>
+  <nav>
+    <section>
+      <h1>Hola</h1>
+      <h2>Nuevos Usuarios</h2>
+      <button onclick="loginGoogle()">Crea una cuenta con Google</button>
+      <button onclick="authAccountFacebook()">Crea una cuenta con Facebook</button>
+      <p>O crea cuenta con tu correo</p>
+      <input id="user" type="user" placeholder="Ingresa tu nombre de usuario">
+      <input id="email" type="email" placeholder="Ingresa email">
+      <input id="password" type="password" placeholder="Ingresa contraseña">
+      <button onclick="register()">Enviar</button>
+      <button>¿Ya eres usuario? Inicia sesión </button>
+    </section>
 
-    <h2>Ingreso de usuarios(ya existentes)</h2>
-    <input id="new-email" type="email" placeholder="Ingresa email">
-    <input id="new-password" type="password" placeholder="Ingresa contraseña">
+    <section> 
+      <h2>Ingreso de usuarios(ya existentes)</h2>
+      <button onclick="loginGoogle()">Ingresa con Google</button>
+      <button onclick="authAccountFacebook()">Ingresa con Facebook</button>
+      <p>O ingresa con tu correo</p>
+      <input id="new-email" type="email" placeholder="Ingresa email">
+      <input id="new-password" type="password" placeholder="Ingresa contraseña">
+      <button onclick="login()">Acceder</button>
+      <button>¿Eres nuevo usuario? Crea una cuenta </button>
+    </section>
+  </nav>
 
-    
-    <button onclick="login()">Acceder</button>
-    
-
-    <div id="conteiner">
+  <main id="conteiner">
         
-    </div>
+  </main>
+  
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-
     <!-- Add additional services that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-functions.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script src="main.js"> </script>
 </body>
