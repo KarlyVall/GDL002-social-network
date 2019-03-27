@@ -8,15 +8,29 @@
   messagingSenderId: "804727554993"
 };
 firebase.initializeApp(config);
+// const db = firebase.firestore();
+// db.settings({timestampsInSnapshots:true});
+
+// db.collection('usuarios').get().then((snapshot) => {
+//   snapshot.docs.forEach(doc => {
+//     console.log(doc.data());
+    
+//   });
+  
+// })
 
 //Function to register new users
 const register = () => {
-    let email =document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-
+    let email =document.querySelector('#email').value;
+    
+    let password = document.querySelector('#password').value;
+    
+    let name = document.querySelector('#user').value
+  
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then (function(){
         verify ()
+        createUserDatabase (email, name)
     })
     .catch(function(error) {
         // Handle Errors here.
@@ -42,9 +56,28 @@ const login =  () => {
         // ...
       });
       
-      
+}
+// Get a reference to the database service
+let database = firebase.database();
+
+//Function to create datebase of users (registred)
+const createUserDatabase = (email, name) => {
+  console.log('estoy funcionando');
+  console.log(uid);
+    // Get a id of user 
+  // let userId = firebase.auth().currentUser.uid;
+  // console.log(userId);
+  
+  firebase.database().ref('usuarios/' + uid).set({
+    username: name,
+    email: email,
+    id: uid,
+    profile_picture : 'imageUrl'
+
+  });
 }
 
+let uid;
 //Function to observer validation
 const observer = () => {
     firebase.auth().onAuthStateChanged(function(user) {
@@ -54,12 +87,15 @@ const observer = () => {
             
           // User is signed in.
           let displayName = user.displayName;
+          console.log(displayName);
+          
           let email = user.email;
           let emailVerified = user.emailVerified;
           let photoURL = user.photoURL;
           let isAnonymous = user.isAnonymous;
-          let uid = user.uid;
+          uid = user.uid;
           let providerData = user.providerData;
+          //createUserDatabase (email, uid)
           // ...
         } else {
           // User is signed out.
