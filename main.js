@@ -1,5 +1,15 @@
+ // Initialize Firebase
+ let config = {
+  apiKey: "AIzaSyCb8jXtsA4ngkEk2blR5GDhtUoQoErYfJQ",
+  authDomain: "compartiendo-sonrisas.firebaseapp.com",
+  databaseURL: "https://compartiendo-sonrisas.firebaseio.com",
+  projectId: "compartiendo-sonrisas",
+  storageBucket: "compartiendo-sonrisas.appspot.com",
+  messagingSenderId: "804727554993"
+};
+firebase.initializeApp(config);
 
-//funcion registrar nuevas usuarias
+//Function to register new users
 const register = () => {
     let email =document.getElementById('email').value;
     let password = document.getElementById('password').value;
@@ -10,33 +20,32 @@ const register = () => {
     })
     .catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        console.log(errorCode);
+        let errorCode = error.code;
         
-        var errorMessage = error.message;
-        console.log(errorMessage);
+        let errorMessage = error.message;
         
         // ...
       });
 }
 
-//funcion ingresar usuarias existentes
+//Funtion to login users (they have an account)
 const login =  () => {
     let newEmail =document.getElementById('new-email').value;
     let newPassword = document.getElementById('new-password').value;
 
     firebase.auth().signInWithEmailAndPassword(newEmail, newPassword).catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        console.log(errorCode);
-        var errorMessage = error.message;
-        console.log(errorMessage);
+        let errorCode = error.code;
+
+        let errorMessage = error.message;
         
         // ...
       });
       
       
 }
+
+//Function to observer validation
 const observer = () => {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -44,13 +53,13 @@ const observer = () => {
             show()
             
           // User is signed in.
-          var displayName = user.displayName;
-          var email = user.email;
-          var emailVerified = user.emailVerified;
-          var photoURL = user.photoURL;
-          var isAnonymous = user.isAnonymous;
-          var uid = user.uid;
-          var providerData = user.providerData;
+          let displayName = user.displayName;
+          let email = user.email;
+          let emailVerified = user.emailVerified;
+          let photoURL = user.photoURL;
+          let isAnonymous = user.isAnonymous;
+          let uid = user.uid;
+          let providerData = user.providerData;
           // ...
         } else {
           // User is signed out.
@@ -64,14 +73,15 @@ const observer = () => {
 
 observer();
 
+//Function to show content when user do login
 const show = () => {
     let content = document.getElementById('conteiner')
     content.innerHTML = `
     <p>Solo usuarios registrados pueden verlo </p>
-    <button onclick="closeSession()">Cerrar seciòn</button>
+    <button onclick="closeSession()">Cerrar sesión</button>
     `;
 }
-
+//Function to logOut
 const closeSession = () => {
     firebase.auth().signOut()
     .then(function (){
@@ -83,9 +93,9 @@ const closeSession = () => {
         
     })
 }
-
+//Function to send email verify
 const verify = () => {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
 
 user.sendEmailVerification().then(function() {
   // Email sent.
@@ -98,56 +108,50 @@ user.sendEmailVerification().then(function() {
 });
 }
 
-
-
-let loginGoogle = () => {
-    console.log("holi");
+//Function to login with Google
+const loginGoogle = () => {
     
-    var provider = new firebase.auth.GoogleAuthProvider();
-    console.log(provider, "algo");
+    let provider = new firebase.auth.GoogleAuthProvider();
+    
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
+      let token = result.credential.accessToken;
       // The signed-in user info.
-      var user = result.user;
+      let user = result.user;
       // ...
     }).catch(function(error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      console.log(errorCode);
-      var errorMessage = error.message;
-      console.log(errorMessage);
+      let errorCode = error.code;
+      
+      let errorMessage = error.message;
+      
       // The email of the user's account used.
-      var email = error.email;
-      console.log(email);
+      let email = error.email;
+      
       // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      console.log(credential);
+      let credential = error.credential;
       // ...
     });
   }
   
-
- function authAccountFacebook () {
+//Function to login with Facebook
+const authAccountFacebook = () => {
     const provider = new firebase.auth.FacebookAuthProvider()
-    console.log(provider);
 
     firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        var token = result.credential.accessToken;
+        let token = result.credential.accessToken;
         // The signed-in user info.
-        var user = result.user;
+        let user = result.user;
         // ...
       }).catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        console.log(errorCode);
-        var errorMessage = error.message;
-        console.log(errorMessage);
+        let errorCode = error.code;
+        let errorMessage = error.message;
         // The email of the user's account used.
-        var email = error.email;
+        let email = error.email;
         // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
+        let credential = error.credential;
         // ...
       });
 }

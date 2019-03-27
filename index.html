@@ -15,13 +15,14 @@
     <input id="email" type="email" placeholder="Ingresa email">
     <input id="password" type="password" placeholder="Ingresa contraseña">
     <button onclick="loginGoogle()">Ingresa con Google</button>
+    <button onclick="authAccountFacebook()">Ingresa con Facebook</button>
     <button onclick="register()">Enviar</button>
 
     <h2>Ingreso de usuarios(ya existentes)</h2>
     <input id="new-email" type="email" placeholder="Ingresa email">
     <input id="new-password" type="password" placeholder="Ingresa contraseña">
 
-    <button onclick="authAccountFacebook()">Ingresa con Facebook</button>
+    
     <button onclick="login()">Acceder</button>
     
 
@@ -38,18 +39,6 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-functions.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyCb8jXtsA4ngkEk2blR5GDhtUoQoErYfJQ",
-        authDomain: "compartiendo-sonrisas.firebaseapp.com",
-        databaseURL: "https://compartiendo-sonrisas.firebaseio.com",
-        projectId: "compartiendo-sonrisas",
-        storageBucket: "compartiendo-sonrisas.appspot.com",
-        messagingSenderId: "804727554993"
-      };
-      firebase.initializeApp(config);
-    </script>
     <script src="main.js"> </script>
 </body>
 </html>
