@@ -19,6 +19,7 @@ const register = () => {
     let email =document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
     let name = document.querySelector('#user').value;
+
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then (function(){
         verify ()
@@ -48,26 +49,6 @@ const login =  () => {
       });
       
 }
-// Get a reference to the database service
-//let database = firebase.database();
-
-//Function to create datebase of users (registred)
-// const createUserDatabase = (email, name) => {
-//   console.log('estoy funcionando');
-//   console.log(email);
-//   console.log(name);
-//   console.log(uid);
-//     // Get a id of user 
-//   // let userId = firebase.auth().currentUser.uid;
-//   // console.log(userId);
-//   firebase.database().ref('usuarios/' + uid).set({
-//     username: name,
-//     email: email,
-//     id: uid,
-//     profile_picture : 'imageUrl'
-
-//   });
-// }
 
 
 //Add user´s data
@@ -112,7 +93,7 @@ const saveData = () => {
 // }
 
 
-//Add user´s data
+//Add user´s coment
 const saveComent = () => {
   console.log('estoy funcionando');
   let text = document.querySelector('#article').value;
@@ -126,6 +107,63 @@ const saveComent = () => {
     console.error("Error adding document: ", error);
   });
 }
+
+//Read documents
+let tableDoc = document.querySelector('table');
+db.collection("posts").onSnapshot((querySnapshot) => {
+  table.innerHTML = ' ';
+  querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data().textuser}`);
+      table.innerHTML += `
+      <tr>
+        <th>${doc.id}</th>
+        <th>${doc.data().textuser}</th>
+        <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar </button></th>
+        <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button></th>
+      </tr>
+      `
+
+  });
+});
+
+//Delete documents
+const deleteComent = (id) => { 
+db.collection("posts").doc(id).delete().then(function() {
+  console.log("Document successfully deleted!");
+}).catch(function(error) {
+  console.error("Error removing document: ", error);
+});
+}
+
+//Edit documents
+
+const editComent = (id, text) => {
+
+  document.querySelector('#article').value = text;
+  let button = document.querySelector('#publicComent');
+  button.innerHTML = 'Guardar'
+  button.onclick = function () {
+    let washingtonRef = db.collection("posts").doc(id);
+    // Set the "capital" field of the city 'DC'
+    let textEdit = document.querySelector('#article').value;
+    
+    return washingtonRef.update({
+      textuser : textEdit
+    })
+    .then(function() {
+       console.log("Document successfully updated!");
+       document.querySelector('#article').value= '';
+       button.innerHTML = 'Publicar'
+       saveComent()
+    })
+    .catch(function(error) {
+       // The document probably doesn't exist.
+       console.error("Error updating document: ", error);
+    });
+  }
+}
+
+
 
 let uid;
 
@@ -144,6 +182,7 @@ const observer = () => {
           let photoURL = user.photoURL;
           let isAnonymous = user.isAnonymous;
           uid = user.uid;
+          console.log(uid);
           let providerData = user.providerData;
           //createUserDatabase (email, uid)
           // ...

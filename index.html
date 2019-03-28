@@ -46,11 +46,23 @@
   <main id="conteiner" style="display:none" >
     <h2>Mi muro</h2>
     <textarea id="article" type= "text" placeholder="¿Qué estas pensando?"></textarea>
-    <button onclick="saveComent()" >Publicar</button>
+    <button id ="publicComent" onclick="saveComent()" >Publicar</button>
     <p>Solo usuarios registrados pueden verlo </p>
     <button onclick="closeSession()">Cerrar sesión</button>
     
-        
+    <table class="hover">
+    <thead>
+      <tr>
+        <th width="200"> id comentario</th>
+        <th> Comentario</th>
+        <th width="150"> eliminar</th>
+        <th width="150"> editar</th>
+      </tr>
+    </thead>
+    <tbody id= "table">
+      
+    </tbody>
+    </table>  
   </main>
   
     <!-- Firebase App is always required and must be first -->
