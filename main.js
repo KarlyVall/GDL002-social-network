@@ -12,8 +12,6 @@ firebase.initializeApp(config);
 // Initialize Cloud Firestore through Firebase
 const db = firebase.firestore();
 
-
-
 //Function to register new users
 const register = () => {
     let email =document.querySelector('#email').value;
@@ -50,50 +48,33 @@ const login =  () => {
       
 }
 
-
+const buttonSend = document.querySelector('#send')
 //Add user´s data
 const saveData = () => {
   console.log('estoy con save data');
   let email = document.querySelector('#email').value;
   let name = document.querySelector('#user').value;
-  db.collection("usuarios").add({
-    nameUser: name,
-    emailUser: email,
-
-  })
-  .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-    document.querySelector('#email').value= " ";
-    document.querySelector('#user').value = " ";
-  })
-  .catch(function(error) {
-    console.error("Error adding document: ", error);
-  });
+  let user =firebase.auth().currentUser;
+  console.log(user);
+  if (user) {
+    console.log( db.collection("usuarios").doc(user.uid))
+  }
+  //   db.collection("usuarios" ).add({
+  //   nameUser: name, 
+  //   emailUser: email,
+  //   id : "gatito"
+  // })
+  // .then(function(docRef) {
+  //   console.log("Document written with ID: ", docRef.id);
+  //   document.querySelector('#email').value= " ";
+  //   document.querySelector('#user').value = " ";
+  // })
+  // .catch(function(error) {
+  //   console.error("Error adding document: ", error);
+  // });
 }
 
-// Get a reference to the database service
-//let database = firebase.database();
-
-//Function to create datebase of users (registred)
-// const createUserDatabase = (email, name) => {
-//   console.log('estoy funcionando');
-//   console.log(email);
-//   console.log(name);
-//   console.log(uid);
-//     // Get a id of user 
-//   // let userId = firebase.auth().currentUser.uid;
-//   // console.log(userId);
-//   firebase.database().ref('usuarios/' + uid).set({
-//     username: name,
-//     email: email,
-//     id: uid,
-//     profile_picture : 'imageUrl'
-
-//   });
-// }
-
-
-//Add user´s coment
+//Save user´s coment
 const saveComent = () => {
   console.log('estoy funcionando');
   let text = document.querySelector('#article').value;
@@ -113,7 +94,7 @@ let tableDoc = document.querySelector('table');
 db.collection("posts").onSnapshot((querySnapshot) => {
   table.innerHTML = ' ';
   querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data().textuser}`);
+     (`${doc.id} => ${doc.data().textuser}`);
       table.innerHTML += `
       <tr>
         <th>${doc.id}</th>
@@ -163,11 +144,6 @@ const editComent = (id, text) => {
   }
 }
 
-
-
-let uid;
-
-
 //Function to observer validation
 const observer = () => {
     firebase.auth().onAuthStateChanged(function(user) {
@@ -181,8 +157,7 @@ const observer = () => {
           let emailVerified = user.emailVerified;
           let photoURL = user.photoURL;
           let isAnonymous = user.isAnonymous;
-          uid = user.uid;
-          console.log(uid);
+          let uid = user.uid;
           let providerData = user.providerData;
           //createUserDatabase (email, uid)
           // ...
