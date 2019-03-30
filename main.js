@@ -48,45 +48,56 @@ const login =  () => {
       
 }
 
-const buttonSend = document.querySelector('#send')
+
 //Add user´s data
 const saveData = () => {
   console.log('estoy con save data');
   let email = document.querySelector('#email').value;
   let name = document.querySelector('#user').value;
-  let user =firebase.auth().currentUser;
-  console.log(user);
+  let user = firebase.auth().currentUser;
   if (user) {
-    console.log( db.collection("usuarios").doc(user.uid))
-  }
-  //   db.collection("usuarios" ).add({
-  //   nameUser: name, 
-  //   emailUser: email,
-  //   id : "gatito"
-  // })
-  // .then(function(docRef) {
-  //   console.log("Document written with ID: ", docRef.id);
-  //   document.querySelector('#email').value= " ";
-  //   document.querySelector('#user').value = " ";
-  // })
-  // .catch(function(error) {
-  //   console.error("Error adding document: ", error);
-  // });
+    db.collection("usuarios").doc(user.uid).set({
+      nameUser: name, 
+      emailUser: email,
+      id : user.uid,
+    })
+    .then(function (){
+      console.log("Document successfully written!");
+    })
+    .catch (function(error) {
+      console.log("Error writing document: ", error);
+    })
+  }  
 }
-
+  
 //Save user´s coment
 const saveComent = () => {
-  console.log('estoy funcionando');
+  console.log('estoy con save coment');
   let text = document.querySelector('#article').value;
-  db.collection("posts").add({
-    textuser : text
-  })
-  .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-    console.error("Error adding document: ", error);
-  });
+  let type = document.querySelector('#categorieArticle').value.toLowerCase();
+  let user = firebase.auth().currentUser;
+  if (user) {
+    db.collection("posts").add({
+      textuser : text,
+      typeArticle : type,
+      id : user.uid
+    })
+    .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+      console.error("Error adding document: ", error);
+    });
+  }
+  
+}
+
+const consult = () => {
+  let postReference = db.collection("posts");
+  let consulta = postReference.where("textuser", "==", "prueba16");
+  console.log(consulta);
+  
+  document.querySelector('#showConsult').innerHTML = consulta
 }
 
 //Read documents
@@ -99,13 +110,14 @@ db.collection("posts").onSnapshot((querySnapshot) => {
       <tr>
         <th>${doc.id}</th>
         <th>${doc.data().textuser}</th>
+        <th>${doc.data().typeArticle}</th>
         <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar </button></th>
-        <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button></th>
+        <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}', '${doc.data().typeArticle}')" > Editar </button></th>
       </tr>
       `
 
-  });
-});
+  })
+})
 
 //Delete documents
 const deleteComent = (id) => { 
@@ -118,23 +130,27 @@ db.collection("posts").doc(id).delete().then(function() {
 
 //Edit documents
 
-const editComent = (id, text) => {
+const editComent = (id, text, type) => {
 
   document.querySelector('#article').value = text;
+  document.querySelector('#categorieArticle').value = type;
+
   let button = document.querySelector('#publicComent');
   button.innerHTML = 'Guardar'
   button.onclick = function () {
-    let washingtonRef = db.collection("posts").doc(id);
+    let postUsers = db.collection("posts").doc(id);
     // Set the "capital" field of the city 'DC'
     let textEdit = document.querySelector('#article').value;
-    
-    return washingtonRef.update({
-      textuser : textEdit
+    let typeEdit = document.querySelector('#categorieArticle').value.toLowerCase();
+    return postUsers.update({
+      textuser : textEdit,
+      typeArticle : typeEdit,
     })
     .then(function() {
        console.log("Document successfully updated!");
-       document.querySelector('#article').value= '';
-       button.innerHTML = 'Publicar'
+      document.querySelector('#article').value= '';
+      document.querySelector('#categorieArticle').value = '';
+       //button.innerHTML = 'Publicar';
        saveComent()
     })
     .catch(function(error) {
@@ -144,6 +160,8 @@ const editComent = (id, text) => {
   }
 }
 
+
+
 //Function to observer validation
 const observer = () => {
     firebase.auth().onAuthStateChanged(function(user) {
@@ -152,7 +170,9 @@ const observer = () => {
             show()
             
           // User is signed in.
-          let displayName = user.displayName;          
+          let displayName = user.displayName;
+          console.log(displayName);
+                    
           let email = user.email;
           let emailVerified = user.emailVerified;
           let photoURL = user.photoURL;
@@ -262,3 +282,4 @@ const authAccountFacebook = () => {
         // ...
       });
 }
+
