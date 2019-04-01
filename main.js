@@ -48,18 +48,48 @@ const login =  () => {
       
 }
 
+//Function to observer validation
+const observer = () => {
+  firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+          console.log('existe usuario');
+          show()
+          
+        // User is signed in.
+        let displayName = user.displayName;          
+        let email = user.email;
+        let emailVerified = user.emailVerified;
+        let photoURL = user.photoURL;
+        let isAnonymous = user.isAnonymous;
+        let uid = user.uid;
+        let providerData = user.providerData;
+        //createUserDatabase (email, uid)
+        // ...
+      } else {
+        // User is signed out.
+        // ...
+        console.log('no existe usuario');
+        
+      }
+    });
+    
+}
+
+observer();
 
 //Add user´s data
 const saveData = () => {
   console.log('estoy con save data');
   let email = document.querySelector('#email').value;
   let name = document.querySelector('#user').value;
+  let password = document.querySelector('#password').value;
   let user = firebase.auth().currentUser;
   if (user) {
     db.collection("usuarios").doc(user.uid).set({
       nameUser: name, 
       emailUser: email,
       id : user.uid,
+      password : password,
     })
     .then(function (){
       console.log("Document successfully written!");
@@ -92,21 +122,57 @@ const saveComent = () => {
   
 }
 
+
+//Read profile user
+let tableDocUser = document.querySelector('#userInformation');
+let user = firebase.auth().onAuthStateChanged(function(user) {
+let docRef = db.collection("usuarios").doc(user.uid);
+    docRef.get().then(function(doc){
+      if (doc.exists) {
+      console.log("Document data:", doc.data());
+      tableDocUser.innerHTML= `
+      <p> ${doc.data().nameUser}</p>
+      <p> ${doc.data().emailUser}</p>`
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+    })
+})
+
+//Read posts user
+let sectionPostUser = document.querySelector('#userPosts')
 const consult = () => {
-  let postReference = db.collection("posts");
-  let consulta = postReference.where("textuser", "==", "prueba16");
-  console.log(consulta);
+  let user = firebase.auth().onAuthStateChanged(function(user) {
+db.collection("posts").where("id", "==", user.uid).get().then((snapshot) => {
+  snapshot.docs.forEach(doc => {
+    //console.log(element.data());
+    //consult(doc);
+    (`${doc.id} => ${doc.data().textuser}`);
+    sectionPostUser.innerHTML += `
+      <tr>
+        <th>${doc.id}</th>
+        <th>${doc.data().textuser}</th>
+        <th>${doc.data().typeArticle}</th>
+        <th><button type="button" class="alert button" > Eliminar </button></th>
+        <th><button type="button" class="success button"  > Editar </button></th>
+       </tr>
+       `
+  });
   
-  document.querySelector('#showConsult').innerHTML = consulta
+})
+})
 }
 
-//Read documents
+//Read documents post
 let tableDoc = document.querySelector('table');
 db.collection("posts").onSnapshot((querySnapshot) => {
   table.innerHTML = ' ';
   querySnapshot.forEach((doc) => {
      (`${doc.id} => ${doc.data().textuser}`);
-      table.innerHTML += `
+      tableDoc.innerHTML += `
       <tr>
         <th>${doc.id}</th>
         <th>${doc.data().textuser}</th>
@@ -160,40 +226,6 @@ const editComent = (id, text, type) => {
   }
 }
 
-
-
-//Function to observer validation
-const observer = () => {
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            console.log('existe usuario');
-            show()
-            
-          // User is signed in.
-          let displayName = user.displayName;
-          console.log(displayName);
-                    
-          let email = user.email;
-          let emailVerified = user.emailVerified;
-          let photoURL = user.photoURL;
-          let isAnonymous = user.isAnonymous;
-          let uid = user.uid;
-          let providerData = user.providerData;
-          //createUserDatabase (email, uid)
-          // ...
-        } else {
-          // User is signed out.
-          // ...
-          console.log('no existe usuario');
-          
-        }
-      });
-      
-}
-
-observer();
-
-
 //Function to show content when user do login
 const show = () => {
     let publicar = document.getElementById('conteiner')
@@ -204,7 +236,6 @@ const show = () => {
     // <p>Solo usuarios registrados pueden verlo </p>
     // <button onclick="closeSession()">Cerrar sesión</button>
     // `;
-    
 
 }
 //Function to logOut

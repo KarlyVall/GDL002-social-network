@@ -43,13 +43,14 @@
   
   <main id="conteiner" style="display:none" >
     <h2>Mi muro</h2>
+    <section id="userInformation"> </section>
     <textarea id="article" type= "text" placeholder="¿Qué quieres ofrecer?"></textarea>
     
     <input id="categorieArticle"  class="categories" placeholder="¿Vender o donar?" >  <br>
     <button id ="publicComent" onclick="saveComent()" >Publicar</button>
     <p>Solo usuarios registrados pueden verlo </p>
-    
-    
+    <section id="userPosts"> </section>
+    <button id="btnconsult" onclick="consult()">Consulta</button>
 
     <table class="hover">
     <thead>
@@ -66,7 +67,7 @@
     </tbody>
     </table>  
     <button onclick="closeSession()">Cerrar sesión</button>
-    <button onclick="consult()">Consulta</button>
+    
     <section id ="showConsult"></section>
   </main>
   
