@@ -110,7 +110,8 @@ const saveComent = () => {
     db.collection("posts").add({
       textuser : text,
       typeArticle : type,
-      id : user.uid
+      id : user.uid,
+      
     })
     .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
@@ -119,7 +120,7 @@ const saveComent = () => {
       console.error("Error adding document: ", error);
     });
   }
-  
+
 }
 
 
@@ -166,7 +167,9 @@ db.collection("posts").where("id", "==", user.uid).get().then((snapshot) => {
 })
 }
 
+
 //Read documents post
+
 let tableDoc = document.querySelector('table');
 db.collection("posts").onSnapshot((querySnapshot) => {
   table.innerHTML = ' ';
@@ -181,12 +184,16 @@ db.collection("posts").onSnapshot((querySnapshot) => {
         <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}', '${doc.data().typeArticle}')" > Editar </button></th>
       </tr>
       `
+      
 
   })
 })
 
+
 //Delete documents
 const deleteComent = (id) => { 
+  console.log("borrando...");
+  
 db.collection("posts").doc(id).delete().then(function() {
   console.log("Document successfully deleted!");
 }).catch(function(error) {
