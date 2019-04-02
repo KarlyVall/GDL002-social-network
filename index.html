@@ -1,80 +1,179 @@
 <!DOCTYPE html>
 <html class="no-js" lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"
-    <title>Share a Smile</title>
-    <!-- Compressed CSS Foundation -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css" integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og= sha384-gP4DhqyoT9b1vaikoHi9XQ8If7UNLO73JFOOlQV1RATrA7D0O7TjJZifac6NwPps sha512-AKwIib1E+xDeXe0tCgbc9uSvPwVYl6Awj7xl0FoaPFostZHOuDQ1abnDNCYtxL/HWEnVOMrFyf91TDgLPi9pNg==" crossorigin="anonymous">
-    <!-- Compressed JavaScript Foundatio -->
-   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Share a Smile</title>
+  <!-- Compressed CSS Foundation -->
+  <link rel="stylesheet" href="style.scss">
 </head>
 <header>
 
 </header>
 
 <body>
-  <nav>
-    <section>
-      <h1>Hola</h1>
-      <h2>Nuevos Usuarios</h2>
-      <button onclick="loginGoogle()">Crea una cuenta con Google</button>
-      <button onclick="authAccountFacebook()">Crea una cuenta con Facebook</button>
-      <p>O crea cuenta con tu correo</p>
-      <input id="user" type="user" placeholder="Ingresa tu nombre de usuario">
-      <input id="email" type="email" placeholder="Ingresa email">
-      <input id="password" type="password" placeholder="Ingresa contraseña">
-      <button onclick="register()">Enviar</button>
-      <button>¿Ya eres usuario? Inicia sesión </button>
-    </section>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '559193874569574',
+        xfbml: true,
+        version: 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+    };
 
-    <section> 
-      <h2>Ingreso de usuarios(ya existentes)</h2>
-      <button onclick="loginGoogle()">Ingresa con Google</button>
-      <button onclick="authAccountFacebook()">Ingresa con Facebook</button>
-      <p>O ingresa con tu correo</p>
-      <input id="new-email" type="email" placeholder="Ingresa email">
-      <input id="new-password" type="password" placeholder="Ingresa contraseña">
-      <button onclick="login()">Acceder</button>
-      <button>¿Eres nuevo usuario? Crea una cuenta </button>
-    </section>
-  </nav>
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1"></script>
+  <div class="form">
+    <img class="centrado" src="http://drive.google.com/uc?export=view&id=1c5t-8Akj_63Ni4qtPvktTKnadgf1EF7A">
 
-  
-  <main id="conteiner" style="display:none" >
+    <ul class="tab-group">
+      <li class="tab active"><a href="#signup">Nuevos usuarios</a></li>
+      <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="signup">
+        <div class="but">
+          <button class="loginBtn loginBtn--google" onclick=" loginGoogle()"> CREAR UNA CUENTA CON GOOGLE</button>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <h1>Ingresa con tu correo</h1>
+
+        <form action="/" method="post">
+
+          <div class="top-row">
+            <div class="field-wrap">
+              <h2>Nombre o nickname</h2>
+              <label>
+                Nombre<span class="req">*</span>
+              </label>
+              <input id="user" type="text" required autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <h2>Email</h2>
+            <label>
+              Ingresa tu email<span class="req">*</span>
+            </label>
+            <input id="email" type="email" required autocomplete="off" />
+          </div>
+
+          <div class="field-wrap">
+            <h2>Contraseña</h2>
+            <label>
+              Ingresa tu contraseña<span class="req">*</span>
+            </label>
+            <input id="password" type="password" required autocomplete="off" />
+          </div>
+
+          <button class="send" type="submit" id="button-block"> Comenzar </button>
+
+        </form>
+
+
+      </div>
+
+      <div id="login">
+        <div class="but">
+          <button class="loginBtn loginBtn--google" onclick="loginGoogle()">INICIA SESION CON GOOGLE</button>
+          <br>
+          <br>
+          <button class="loginBtn loginBtn--facebook" onclick="authAccountFacebook()">INICIA SESION CON
+            FACEBOOK</button>
+          <br>
+          <br>
+          <br>
+        </div>
+        <h1>ó inicia sesión con email:</h1>
+        <form action="/" method="post">
+
+          <div class="field-wrap">
+            <h2>Usuario o email</h2>
+            <label>
+              correo@gmail.com<span class="req">*</span>
+            </label>
+            <input id="new-email" type="email" required autocomplete="off" />
+          </div>
+
+          <div class="field-wrap">
+            <h2>Contraseña</h2>
+            <label>
+              Mayor a 6 caracteres<span class="req">*</span>
+            </label>
+            <input type="password" required autocomplete="off" />
+          </div>
+
+          <p class="forgot"><a href="#">
+              ¿Olvidaste tu contraseña?</a></p>
+
+          <button class="send" id="button-block">Comenzar</button>
+
+        </form>
+
+      </div>
+
+    </div><!-- tab-content -->
+
+  </div> <!-- /form -->
+  <main id="conteiner" style="display:none">
     <h2>Mi muro</h2>
-    <textarea id="article" type= "text" placeholder="¿Qué estas pensando?"></textarea>
-    <button id ="publicComent" onclick="saveComent()" >Publicar</button>
+    <div class="fb-like" data-share="true" data-width="450" data-show-faces="true">
+    </div>
+    <textarea id="article" type="text" placeholder="¿Qué estas pensando?"></textarea>
+    <button id="publicComent" onclick="saveComent()">Publicar</button>
     <p>Solo usuarios registrados pueden verlo </p>
     <button onclick="closeSession()">Cerrar sesión</button>
-    
+
 
     <table class="hover">
-    <thead>
-      <tr>
-        <th width="200"> id comentario</th>
-        <th> Comentario</th>
-        <th width="150"> eliminar</th>
-        <th width="150"> editar</th>
-      </tr>
-    </thead>
-    <tbody id= "table">
-      
-    </tbody>
-    </table>  
-  </main>
-  
+      <thead>
+        <tr>
+          <th width="200"> id comentario</th>
+          <th> Comentario</th>
+          <th width="150"> eliminar</th>
+          <th width="150"> editar</th>
+        </tr>
+      </thead>
+      <tbody id="table">
 
-    <!-- Firebase App is always required and must be first -->
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-    <!-- Add additional services that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-messaging.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-functions.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-    <script src="main.js"> </script>
+      </tbody>
+    </table>
+  </main>
+
+  <div class="mobile-app-icon-bar">
+    <button><i class="fa fa-home" aria-hidden="true"></i></button>
+    <button><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <button><i class="fa fa-user" aria-hidden="true"></i></button>
+  </div>-->
+
+
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  <script src="main.js"> </script>
+
 </body>
+
 </html>
