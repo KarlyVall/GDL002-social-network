@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Share a Smile</title>
+   <!-- Compressed CSS Foundation -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css"
+      integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og= sha384-gP4DhqyoT9b1vaikoHi9XQ8If7UNLO73JFOOlQV1RATrA7D0O7TjJZifac6NwPps sha512-AKwIib1E+xDeXe0tCgbc9uSvPwVYl6Awj7xl0FoaPFostZHOuDQ1abnDNCYtxL/HWEnVOMrFyf91TDgLPi9pNg=="
+      crossorigin="anonymous">
+   <!-- Google Fonts -->
+   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+   <!-- Normalize Browsers -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+   <!-- Our local styles -->
+   <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+<header>
+
+</header>
+
+<body>
+
+   <div class="form">
+      <img class="centrado" src="http://drive.google.com/uc?export=view&id=1c5t-8Akj_63Ni4qtPvktTKnadgf1EF7A">
+      <!-- Create new account -->
+      <ul class="tab-group">
+         <li class="tab active"><a href="#signup">Nuevos usuarios</a></li>
+         <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+
+      <div class="tab-content">
+         <div id="signup">
+            <div class="but">
+               <!-- Create new account with Google-->
+               <button class="loginBtn loginBtn--google" onclick=" loginGoogle()"> CREAR UNA CUENTA CON GOOGLE</button>
+               <br>
+               <br>
+               <!-- Create new account with Facebook-->
+               <button class="loginBtn loginBtn--facebook" onclick="authAccountFacebook()"> CREA UNA CUENTA CON
+                  FACEBOOK</button>
+               <br>
+               <br>
+            </div>
+            <!-- Create new account with Email-->
+            <h1>Ingresa con tu correo</h1>
+            <div class="top-row">
+               <div class="field-wrap">
+                  <h2>Nombre o nickname</h2>
+                  <label>
+                     Nombre<span class="req">*</span>
+                  </label>
+                  <!-- User name new account input-->
+                  <input id="user" type="text" required autocomplete="off" />
+               </div>
+            </div>
+
+            <div class="field-wrap">
+               <h2>Email</h2>
+               <label>
+                  Ingresa tu email<span class="req">*</span>
+               </label>
+               <!-- Email new account input-->
+               <input id="email" type="email" required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap">
+               <h2>Contraseña</h2>
+               <label>
+                  Ingresa tu contraseña<span class="req">*</span>
+               </label>
+               <input id="password" type="password" required autocomplete="off" />
+            </div>
+
+            <button class="send-style" type="submit" id="send" onclick="register()" /> Comenzar </button>
+
+
+
+
+         </div>
+
+         <div id="login">
+            <div class="but">
+               <button class="loginBtn loginBtn--google" onclick="loginGoogle()">INICIA SESION CON GOOGLE</button>
+               <br>
+               <br>
+               <button class="loginBtn loginBtn--facebook" onclick="authAccountFacebook()">INICIA SESION CON
+                  FACEBOOK</button>
+               <br>
+               <br>
+               <br>
+            </div>
+            <h1>ó inicia sesión con email:</h1>
+
+
+            <div class="field-wrap">
+               <h2>Usuario o email</h2>
+               <label>
+                  correo@gmail.com<span class="req">*</span>
+               </label>
+               <input id="new-email" type="email" required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap">
+               <h2>Contraseña</h2>
+               <label>
+                  Mayor a 6 caracteres<span class="req">*</span>
+               </label>
+               <input id="new-password" type="password" required autocomplete="off" />
+            </div>
+
+            <p class="forgot"><a href="#">
+                  ¿Olvidaste tu contraseña?</a></p>
+
+            <button class="send" id="button-block" onclick="login()" />Comenzar</button>
+
+
+
+         </div>
+
+      </div><!-- tab-content -->
+
+   </div>
+
+   <main id="conteiner" style="display:none">
+      <h2>Mi muro</h2>
+      <section id="userInformation"></section>
+      <textarea id="article" type="text" placeholder="Publica tu producto"></textarea>
+      <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
+      <button id="publicComent" onclick="saveComent()">Publicar</button>
+      <p>Solo usuarios registrados pueden verlo </p>
+      <section id="userPosts"></section>
+      <button onclick="closeSession()">Cerrar sesión</button>
+
+
+      <table class="hover">
+         <thead>
+            <tr>
+               <th width="200"> id comentario</th>
+               <th> Comentario</th>
+               <th width="150"> eliminar</th>
+               <th width="150"> editar</th>
+            </tr>
+         </thead>
+         <tbody id="table">
+
+         </tbody>
+      </table>
+   </main>
+
+
+   <!-- Firebase App is always required and must be first -->
+   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+   <!-- Add additional services that you want to use -->
+   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+   <script src="js/firebase-initialize.js"></script>
+   <script src="js/create-new-account.js"></script>
+   <script src="js/login-users.js"></script>
+   <script src="js/main.js"> </script>
+   <script src="js/timeline.js"></script>
+   <script src="js/newsfeed.js"></script>
+   <!-- <script src="js/login-style.js"></script> -->
+   
+
+</body>
+
+</html>
