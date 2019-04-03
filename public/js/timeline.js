@@ -8,7 +8,8 @@ const saveComent = () => {
       db.collection("posts").add({
         textuser : text,
         typeArticle : type,
-        id : user.uid
+        id : user.uid,
+        email : user.email,
       })
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -37,30 +38,29 @@ const saveComent = () => {
       console.log("Error getting document:", error);
     })
   }) 
-  
-  //Read owner account posts (timeline)
-  let sectionPostUser = document.querySelector('#userPosts')
+
+  let tableDoc = document.querySelector('#timelineUser');
   const consult = () => {
   let user = firebase.auth().onAuthStateChanged(function(user){
   db.collection("posts").where("id", "==", user.uid).get().then((snapshot) => {
+    //tableDoc.innerHTML = ' ';
   snapshot.docs.forEach(doc => {
-    //console.log(element.data());
-    //consult(doc);
     (`${doc.id} => ${doc.data().textuser}`);
-    sectionPostUser.innerHTML += `
-      <tr>
-        <th>${doc.id}</th>
-        <th>${doc.data().textuser}</th>
-        <th>${doc.data().typeArticle}</th>
-        <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')" > Eliminar </button></th>
-        <th><button type="button" class="success button" > Editar </button></th>
-       </tr>
+    tableDoc.innerHTML += `
+    <section class="callout success">
+      <p>${doc.id}</p>
+      <p>${doc.data().textuser}</p>
+      <p>${doc.data().typeArticle}</p>
+      <button type="button" class="alert button" onclick = "deleteComent('${doc.id}')" > Eliminar </button>
+      <button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button>
+      <a href="#"></a>
+    </section>
        `
   });
-  
   })
   })
   }
+  
   consult();
 //Function to logOut
 const closeSession = () => {

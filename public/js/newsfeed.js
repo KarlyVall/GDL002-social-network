@@ -1,18 +1,17 @@
-//Reading post from everyone (newsfeed)
-let tableDoc = document.querySelector('table');
+
+let sectionPostUser = document.querySelector('#userPosts');
 db.collection("posts").onSnapshot((querySnapshot) => {
-  table.innerHTML = ' ';
+  //table.innerHTML = ' ';
   querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${doc.data().textuser}`);
-      table.innerHTML += `
-      <tr>
-        <th>${doc.id}</th>
-        <th>${doc.data().textuser}</th>
-        <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar </button></th>
-        <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button></th>
-      </tr>
+      sectionPostUser.innerHTML += `  
+    <section class="callout alert">
+      <h5>${doc.data().email} dice: </h5>
+      <p>${doc.id}</p>
+      <p>${doc.data().textuser}</p>
+      <a href="#"></a>
+    </section>
       `
-
   });
 });
 
