@@ -1,54 +1,24 @@
 //Reading post from everyone (newsfeed)
-let tableDoc = document.querySelector('table');
+let newsfeedSection = document.querySelector('#home-app');
 db.collection("posts").onSnapshot((querySnapshot) => {
-  table.innerHTML = ' ';
+  // table.innerHTML = ' ';
   querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${doc.data().textuser}`);
-      table.innerHTML += `
-      <tr>
-        <th>${doc.id}</th>
-        <th>${doc.data().textuser}</th>
-        <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar </button></th>
-        <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button></th>
-      </tr>
+      newsfeedSection.innerHTML += `
+      <div class="card">
+               <div class="card-section grid-x">
+                  <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
+                  <p class="cell small-9 user-name">${doc.data().email}<br>Categoría: ${doc.data().typeArticle}</p>
+                  
+               </div>
+               <div class="grid-x">
+                  <span class="cell small-12 post-text">${doc.data().textuser}</span>
+               </div>
+               <!--like botton-->
+      <div class="fb-like" data-href="https://compartiendo-sonrisas.firebaseio.com/" data-layout="button_count"
+         data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+      </div>
       `
 
   });
 });
-
-//Delete posts from newsfeed
-const deleteComent = (id) => { 
-db.collection("posts").doc(id).delete().then(function() {
-  console.log("Document successfully deleted!");
-}).catch(function(error) {
-  console.error("Error removing document: ", error);
-});
-}
-
-//Edit posts from newsfeed
-
-const editComent = (id, text) => {
-
-  document.querySelector('#article').value = text;
-  let button = document.querySelector('#publicComent');
-  button.innerHTML = 'Guardar'
-  button.onclick = function () {
-    let washingtonRef = db.collection("posts").doc(id);
-    // Set the "capital" field of the city 'DC'
-    let textEdit = document.querySelector('#article').value;
-    
-    return washingtonRef.update({
-      textuser : textEdit
-    })
-    .then(function() {
-       console.log("Document successfully updated!");
-       document.querySelector('#article').value= '';
-       button.innerHTML = 'Publicar'
-       saveComent()
-    })
-    .catch(function(error) {
-       // The document probably doesn't exist.
-       console.error("Error updating document: ", error);
-    });
-  }
-}

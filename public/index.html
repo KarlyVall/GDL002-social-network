@@ -14,17 +14,74 @@
    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
    <!-- Normalize Browsers -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <!-- Use these stylesheets for icons and typography in head of your HTML doc if you want :) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
    <!-- Our local styles -->
-   <!-- <link rel="stylesheet" href="css/style.css"> -->
+   <link rel="stylesheet" href="css/style.css">
 </head>
-<header>
 
-</header>
 
 <body>
+<!-- Start of body below -->
 
+ 
+ <!-- Add content where magellan will be linked -->
+ <div class="sections">
+   <section id="first" data-magellan-target="first">First Section</section>
+   <section id="second" data-magellan-target="second">Second Section</section>
+   <section id="third" data-magellan-target="third">Third Section</section>
+ </div>
+
+
+
+
+<div class="responsive-nav-social-mobile" data-responsive-toggle="responsive-nav-social" data-hide-for="medium">
+  <div class="responsive-nav-social-mobile-left">
+    <ul class="menu">
+      <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+      <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+      <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+      <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+  <div class="responsive-nav-social-mobile-right">
+    <button class="menu-icon" type="button" data-toggle="responsive-nav-social"></button>
+  </div>
+</div>
+
+<div data-sticky-container>
+  <div class="responsive-nav-social" id="responsive-nav-social" data-sticky data-options="marginTop:0;">
+    <div class="row align-justify align-middle" id="responsive-menu">
+      <div class="responsive-nav-social-left">
+        <ul class="menu vertical medium-horizontal">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Travel</a></li>
+          <li><a href="#">Eat</a></li>
+          <li><a href="#">Relax</a></li>
+          <li><a href="#">Videos</a></li>
+        </ul>
+      </div>
+      <div class="responsive-nav-social-right hide-for-small-only">
+        <ul class="menu">
+          <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+          <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+   <div class="grid-x margin-gutters">
+         <div class="small-2 large-4 medium-4 cell">6 cells</div>
+         <div class="small-8 large-4 medium-4 cell"><img src="img/img-logo-login2.png"/></div>
+         <div class="small-2 large-4 medium-4 cell">6 cells</div>
+   </div>
+   
    <div class="form">
-      <img class="centrado" src="http://drive.google.com/uc?export=view&id=1c5t-8Akj_63Ni4qtPvktTKnadgf1EF7A">
       <!-- Create new account -->
       <ul class="tab-group">
          <li class="tab active"><a href="#signup">Nuevos usuarios</a></li>
@@ -33,13 +90,13 @@
 
       <div class="tab-content">
          <div id="signup">
-            <div class="but">
+            <div class="grid-x but">
                <!-- Create new account with Google-->
-               <button class="loginBtn loginBtn--google" onclick=" loginGoogle()"> CREAR UNA CUENTA CON GOOGLE</button>
+               <button class="loginBtn loginBtn--google small-6 large-6 cell" onclick=" loginGoogle()"> CREAR UNA CUENTA CON GOOGLE</button>
                <br>
                <br>
                <!-- Create new account with Facebook-->
-               <button class="loginBtn loginBtn--facebook" onclick="authAccountFacebook()"> CREA UNA CUENTA CON
+               <button class="loginBtn loginBtn--facebook small-6 large-6 cell" onclick="authAccountFacebook()"> CREA UNA CUENTA CON
                   FACEBOOK</button>
                <br>
                <br>
@@ -134,7 +191,6 @@
       <section id="userPosts"></section>
       <button onclick="closeSession()">Cerrar sesión</button>
 
-
       <table class="hover">
          <thead>
             <tr>
@@ -160,11 +216,12 @@
    <script src="js/firebase-initialize.js"></script>
    <script src="js/create-new-account.js"></script>
    <script src="js/login-users.js"></script>
-   <script src="js/main.js"> </script>
+   <script src="js/observer.js"> </script>
    <script src="js/timeline.js"></script>
    <script src="js/newsfeed.js"></script>
+   <script src="js/index.js"></script>
    <!-- <script src="js/login-style.js"></script> -->
-   
+
 
 </body>
 
