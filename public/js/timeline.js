@@ -8,7 +8,8 @@ const saveComent = () => {
       db.collection("posts").add({
         textuser : text,
         typeArticle : type,
-        id : user.uid
+        id : user.uid,
+        email : user.email,
       })
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -48,13 +49,14 @@ const saveComent = () => {
     //consult(doc);
     (`${doc.id} => ${doc.data().textuser}`);
     sectionPostUser.innerHTML += `
-      <tr>
-        <th>${doc.id}</th>
-        <th>${doc.data().textuser}</th>
-        <th>${doc.data().typeArticle}</th>
-        <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')" > Eliminar </button></th>
-        <th><button type="button" class="success button" > Editar </button></th>
-       </tr>
+    <section class="callout success">
+    <p>${doc.id}</p>
+    <p>${doc.data().textuser}</p>
+    <p>${doc.data().typeArticle}</p>
+    <button type="button" class="alert button" onclick = "deleteComent('${doc.id}')" > Eliminar </button>
+    <button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button>
+    <a href="#"></a>
+    </section>
        `
   });
   
@@ -62,6 +64,43 @@ const saveComent = () => {
   })
   }
   consult();
+
+//Delete posts from newsfeed
+const deleteComent = (id) => { 
+  db.collection("posts").doc(id).delete().then(function() {
+    console.log("Document successfully deleted!");
+  }).catch(function(error) {
+    console.error("Error removing document: ", error);
+  });
+  }
+  
+  //Edit posts from newsfeed
+  
+  const editComent = (id, text) => {
+  
+    document.querySelector('#article').value = text;
+    let button = document.querySelector('#publicComent');
+    button.innerHTML = 'Guardar'
+    button.onclick = function () {
+      let washingtonRef = db.collection("posts").doc(id);
+      // Set the "capital" field of the city 'DC'
+      let textEdit = document.querySelector('#article').value;
+      
+      return washingtonRef.update({
+        textuser : textEdit
+      })
+      .then(function() {
+         console.log("Document successfully updated!");
+         document.querySelector('#article').value= '';
+         button.innerHTML = 'Publicar'
+         saveComent()
+      })
+      .catch(function(error) {
+         // The document probably doesn't exist.
+         console.error("Error updating document: ", error);
+      });
+    }
+  }
 //Function to logOut
 const closeSession = () => {
     firebase.auth().signOut()
