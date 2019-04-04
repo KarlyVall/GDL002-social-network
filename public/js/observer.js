@@ -2,7 +2,12 @@
 const observer = () => {
   firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-          console.log('existe usuario');
+        // document.getElementById('title-bar-menu').className = "title-bar";
+        // document.getElementById('mobile-menu').className = "visible";
+        // document.getElementById('access-screen').className = "invisible";
+        // document.getElementById('home-app').className = "visible";
+        
+        console.log('existe usuario');
           // show()
           
         // User is signed in.
