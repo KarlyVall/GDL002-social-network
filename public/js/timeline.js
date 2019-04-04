@@ -110,7 +110,10 @@ const closeSession = () => {
   firebase.auth().signOut()
     .then(function () {
       console.log('saliendo...');
-
+      document.getElementById('title-bar-menu').className = "invisible";
+      document.getElementById('mobile-menu').className = "invisible";
+      document.getElementById('access-screen').className = "visible";
+      document.getElementById('home-app').className = "invisible";
 
     })
     .catch(function (error) {

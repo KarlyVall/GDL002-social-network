@@ -1,3 +1,9 @@
+.invisible {
+  display: none;
+}
+.visible {
+  display: block;
+}
 /* Fixed Footer */
 footer{
   position:fixed;
@@ -55,6 +61,7 @@ footer{
   font-size: 0.85em;
   color: #6c6c6c;
 }
+
 
 /* Card Post Style */
 .card {
@@ -130,4 +137,5 @@ footer{
 .title-bar {
   height: 50px;
   background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  display: block;
 }
