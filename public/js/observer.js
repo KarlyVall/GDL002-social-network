@@ -2,8 +2,13 @@
 const observer = () => {
   firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-          console.log('existe usuario');
-          show()
+        // document.getElementById('title-bar-menu').className = "title-bar";
+        // document.getElementById('mobile-menu').className = "visible";
+        // document.getElementById('access-screen').className = "invisible";
+        // document.getElementById('home-app').className = "visible";
+        
+        console.log('existe usuario');
+          // show()
           
         // User is signed in.
         let displayName = user.displayName;          
@@ -29,13 +34,9 @@ const observer = () => {
 observer();
 
 
-
-
-
-
-//Function to show content when user do login
-const show = () => {
-    let publicar = document.getElementById('conteiner')
-    publicar.style.display = "block";
-}
+// //Function to show content when user do login
+// const show = () => {
+//     let publicar = document.getElementById('conteiner')
+//     publicar.style.display = "block";
+// }
 
