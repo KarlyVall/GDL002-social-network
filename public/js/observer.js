@@ -7,7 +7,7 @@ const observer = () => {
         // document.getElementById('access-screen').className = "invisible";
         // document.getElementById('home-app').className = "visible";
         
-        console.log('existe usuario');
+        alert('Bienvenido');
           // show()
           
         // User is signed in.
@@ -35,8 +35,8 @@ observer();
 
 
 // //Function to show content when user do login
-// const show = () => {
-//     let publicar = document.getElementById('conteiner')
-//     publicar.style.display = "block";
-// }
+ const show = () => {
+     let publicar = document.getElementById('conteiner')
+     publicar.style.display = "block";
+ }
 
