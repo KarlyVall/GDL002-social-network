@@ -22,7 +22,7 @@ let newsfeed = `<table class="hover">
 </tbody>
 </table>`
 
-let routes = {
-    '' : timeline,
-    '#timeline' : timeline,
-}
+// let routes = {
+//     '' : timeline,
+//     '#timeline' : timeline,
+// }

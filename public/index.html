@@ -1,218 +1,222 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
 
 <head>
-   <meta charset="UTF-8">
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Share a Smile</title>
-   <!-- Compressed CSS Foundation -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css"
-      integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og= sha384-gP4DhqyoT9b1vaikoHi9XQ8If7UNLO73JFOOlQV1RATrA7D0O7TjJZifac6NwPps sha512-AKwIib1E+xDeXe0tCgbc9uSvPwVYl6Awj7xl0FoaPFostZHOuDQ1abnDNCYtxL/HWEnVOMrFyf91TDgLPi9pNg=="
-      crossorigin="anonymous">
-   <!-- Google Fonts -->
-   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-   <!-- Normalize Browsers -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <!-- Use these stylesheets for icons and typography in head of your HTML doc if you want :) -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+   <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   <!-- Page JS -->
+   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+   <!-- Foundation Links -->
+   <!-- Insert this within your head tag and after foundation.css -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
+   <link rel="stylesheet" href="css/foundation.css">
+   <link rel="stylesheet" href="css/app.css">
+
    <!-- Our local styles -->
    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
-
 <body>
-<!-- Start of body below -->
-
- 
- <!-- Add content where magellan will be linked -->
- <div class="sections">
-   <section id="first" data-magellan-target="first">First Section</section>
-   <section id="second" data-magellan-target="second">Second Section</section>
-   <section id="third" data-magellan-target="third">Third Section</section>
- </div>
-
-
-
-
-<div class="responsive-nav-social-mobile" data-responsive-toggle="responsive-nav-social" data-hide-for="medium">
-  <div class="responsive-nav-social-mobile-left">
-    <ul class="menu">
-      <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-      <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-    </ul>
-  </div>
-  <div class="responsive-nav-social-mobile-right">
-    <button class="menu-icon" type="button" data-toggle="responsive-nav-social"></button>
-  </div>
-</div>
-
-<div data-sticky-container>
-  <div class="responsive-nav-social" id="responsive-nav-social" data-sticky data-options="marginTop:0;">
-    <div class="row align-justify align-middle" id="responsive-menu">
-      <div class="responsive-nav-social-left">
-        <ul class="menu vertical medium-horizontal">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Travel</a></li>
-          <li><a href="#">Eat</a></li>
-          <li><a href="#">Relax</a></li>
-          <li><a href="#">Videos</a></li>
-        </ul>
+   <p id="crear"></p>
+   <!--like botton-->
+   <div id="fb-root"></div>
+   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1"></script>
+   <!-- Desktop Menu-->
+   <!-- Sticky Menu-->
+   <div class="hide-for-small-only hide-for-medium-only" data-sticky-container>
+      <div class="top-bar" data-sticky data-margin-top="0" id="example-menu">
+         <div class="top-bar-left">
+            <ul class="menu">
+               <li class="menu-text">Site Title</li>
+            </ul>
+         </div>
+         <div class="top-bar-right">
+            <ul class="menu" data-magellan>
+               <li><a href="#first">One</a></li>
+               <li><a href="#second">Two</a></li>
+               <li><a href="#third">Three</a></li>
+            </ul>
+         </div>
       </div>
-      <div class="responsive-nav-social-right hide-for-small-only">
-        <ul class="menu">
-          <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-          <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-          <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-          <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-  
-   <div class="grid-x margin-gutters">
-         <div class="small-2 large-4 medium-4 cell">6 cells</div>
-         <div class="small-8 large-4 medium-4 cell"><img src="img/img-logo-login2.png"/></div>
-         <div class="small-2 large-4 medium-4 cell">6 cells</div>
    </div>
-   
-   <div class="form">
-      <!-- Create new account -->
-      <ul class="tab-group">
-         <li class="tab active"><a href="#signup">Nuevos usuarios</a></li>
-         <li class="tab"><a href="#login">Log In</a></li>
-      </ul>
+   <!-- Desktop Content-->
+   <!-- Add content where magellan will be linked -->
+   <div class="sections hide-for-small-only hide-for-medium-only">
+      <section id="first" data-magellan-target="first"></section>
+      <section id="second" data-magellan-target="second"></section>
+      <section id="third" data-magellan-target="third"></section>
+   </div>
 
-      <div class="tab-content">
-         <div id="signup">
-            <div class="grid-x but">
-               <!-- Create new account with Google-->
-               <button class="loginBtn loginBtn--google small-6 large-6 cell" onclick=" loginGoogle()"> CREAR UNA CUENTA CON GOOGLE</button>
-               <br>
-               <br>
-               <!-- Create new account with Facebook-->
-               <button class="loginBtn loginBtn--facebook small-6 large-6 cell" onclick="authAccountFacebook()"> CREA UNA CUENTA CON
-                  FACEBOOK</button>
-               <br>
-               <br>
-            </div>
-            <!-- Create new account with Email-->
-            <h1>Ingresa con tu correo</h1>
-            <div class="top-row">
-               <div class="field-wrap">
-                  <h2>Nombre o nickname</h2>
-                  <label>
-                     Nombre<span class="req">*</span>
-                  </label>
-                  <!-- User name new account input-->
-                  <input id="user" type="text" required autocomplete="off" />
+   <!-- Mobile logo bar-->
+   <!-- Sticky bar-->
+   <div id="title-bar-menu" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+   </div>
+
+   <!-- Mobile Login with account-->
+   <section id="access-screen">
+      <div class="sign-in-form">
+         <h4 class="text-center">Inicia sesión</h4>
+         <label for="sign-in-form-username">Usuario o Email</label>
+         <input type="text" id="new-email" placeholder="Tu correo" />
+         <label for="sign-in-form-password">Contraseña</label>
+         <input type="password" id="new-password" placeholder="Tu contraseña" />
+         <button onclick="login()" type="submit" class="sign-in-form-button">Ingresar</button>
+      </div>
+
+      <div class="text-center text-upper"><span>Ó inicia sesión con</span></div>
+      <div id="wrapper">
+         <span class="text-center">
+            <button onclick="authAccountFacebook()" type="button" class="button social facebook">
+               <i class="fab fa-facebook fa-lg"></i>
+            </button>
+            <button onclick="loginGoogle()" type="button" class="button social google-plus">
+               <i class="fab fa-google fa-lg"></i>
+            </button>
+      </div>
+      <div class="text-center"><span>¿No tienes cuenta? <a href="#register-screen">Crea una aquí</a></span></div>
+   </section>
+
+<!-- Mobile Login with account-->
+<section id="register-screen">
+      <div class="sign-in-form">
+         <h4 class="text-center">Crea tu cuenta</h4>
+         <!-- User name new account input-->
+         <label for="sign-in-form-username">Nombre/Nickname</label>
+         <input id="user" type="text" required autocomplete="off" />
+         
+         <!-- Email new account input-->
+         <label for="sign-in-form-username">Email</label>
+         <input id="email" type="email" required autocomplete="off" />
+
+         <!-- Password new account input-->
+         <label for="sign-in-form-password">Contraseña</label>
+         <input id="password" type="password" required autocomplete="off" />
+
+
+         <button onclick="register()" type="submit" class="sign-in-form-button">Crear mi cuenta</button>
+      </div>
+
+      <div class="text-center text-upper"><span>Ó crea una cuenta con</span></div>
+      <div id="wrapper">
+         <span class="text-center">
+            <button onclick="authAccountFacebook()" type="button" class="button social facebook">
+               <i class="fab fa-facebook fa-lg"></i>
+            </button>
+            <button onclick="loginGoogle()" type="button" class="button social google-plus">
+               <i class="fab fa-google fa-lg"></i>
+            </button>
+      </div>
+      <div class="text-center"><span>¿Ya tienes cuenta? <a href="#access-screen">Inicia sesión aquí</a></span></div>
+   </section>
+
+
+   <!-- Mobile HOME NEWSFEED 1# HASH-->
+   <section id="home-app">
+      <ul class="tabs grid-x" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
+         data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
+         <li class="tabs-title is-active cell small-6"><a href="#panelToSell" aria-selected="true">Venta</a></li>
+         <li class="tabs-title cell small-6"><a href="#panelToDonate">Donación</a></li>
+      </ul>
+      <!-- Mobile-->
+      <!-- Tabs for newsfeed, Vender o Donar -->
+
+      <div class="tabs-content" data-tabs-content="deeplinked-tabs">
+         <!-- Tab Vender -->
+         <div class="tabs-panel is-active" id="panelToSell">
+            <!-- Posts timeline selling -->
+         </div>
+         <!-- Tab Donar -->
+         <div class="tabs-panel" id="panelToDonate">
+            <!-- Posts timeline donating -->
+         </div>
+      </div>
+   </section>
+
+
+
+   <!-- Mobile TIMELINE 2# HASH-->
+   <section id="timeline-app">
+      <ul class="tabs grid-x" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
+         data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
+         <li class="tabs-title is-active cell small-6"><a href="#panelTimeline" aria-selected="true">Mi Muro</a></li>
+         <li class="tabs-title cell small-6"><a href="#panelProducts">Mis Productos</a></li>
+      </ul>
+      <!-- Mobile-->
+      <!-- Tabs for timeline, Vender o Donar -->
+      <div class="tabs-content" data-tabs-content="deeplinked-tabs">
+         <!-- Tab Timeline -->
+         <div class="tabs-panel is-active" id="panelTimeline">
+            <!-- To Post -->
+            <div class="card">
+               <div id="userInformation" class="card-section grid-x">
+
+               </div>
+               <div class="grid-x">
+                  <textarea id="article" type="text" placeholder="Publica tu producto" style="height: 8em;"></textarea>
+                  <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
+                  <button id="publicComent" onclick="saveComent()" class="button cell small-12">Publicar</button>
                </div>
             </div>
-
-            <div class="field-wrap">
-               <h2>Email</h2>
-               <label>
-                  Ingresa tu email<span class="req">*</span>
-               </label>
-               <!-- Email new account input-->
-               <input id="email" type="email" required autocomplete="off" />
-            </div>
-
-            <div class="field-wrap">
-               <h2>Contraseña</h2>
-               <label>
-                  Ingresa tu contraseña<span class="req">*</span>
-               </label>
-               <input id="password" type="password" required autocomplete="off" />
-            </div>
-
-            <button class="send-style" type="submit" id="send" onclick="register()" /> Comenzar </button>
-
-
-
-
          </div>
+         <!-- Post in timeline -->
+         <section id="timelineUser">
 
-         <div id="login">
-            <div class="but">
-               <button class="loginBtn loginBtn--google" onclick="loginGoogle()">INICIA SESION CON GOOGLE</button>
-               <br>
-               <br>
-               <button class="loginBtn loginBtn--facebook" onclick="authAccountFacebook()">INICIA SESION CON
-                  FACEBOOK</button>
-               <br>
-               <br>
-               <br>
-            </div>
-            <h1>ó inicia sesión con email:</h1>
+         </section>
+      </div>
 
+      <!-- Tabs Mis productos (siguiente iteración) -->
+      <div class="tabs-panel" id="panelProducts">
+         <!-- Posts timeline
+            <div class="card">
+               <div class="card-section grid-x">
+                  <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
+                  <p class="cell small-9 user-name">Nombre del Usuario<br>Categoría: Donación</p>
+                  <p class="cell small-1 see-more"><i class="fas fa-ellipsis-v fa-lg"></i></p>
+               </div>
+               <div class="grid-x">
+                  <span class="cell small-12 post-text">Nombre del Usuario Nombre del Usuario Nombre del Usuario Nombre
+                     del Usuario Nombre del Usuario Nombre del Usuario</span>
+                  <a href="about.html" class="button cell small-12">Publicar</a>
+               </div>
+            </div> -->
+      </div>
+      </div>
 
-            <div class="field-wrap">
-               <h2>Usuario o email</h2>
-               <label>
-                  correo@gmail.com<span class="req">*</span>
-               </label>
-               <input id="new-email" type="email" required autocomplete="off" />
-            </div>
+   </section>
 
-            <div class="field-wrap">
-               <h2>Contraseña</h2>
-               <label>
-                  Mayor a 6 caracteres<span class="req">*</span>
-               </label>
-               <input id="new-password" type="password" required autocomplete="off" />
-            </div>
-
-            <p class="forgot"><a href="#">
-                  ¿Olvidaste tu contraseña?</a></p>
-
-            <button class="send" id="button-block" onclick="login()" />Comenzar</button>
-
-
-
-         </div>
-
-      </div><!-- tab-content -->
-
-   </div>
-
-   <main id="conteiner" style="display:none">
-      <h2>Mi muro</h2>
-      <section id="userInformation"></section>
-      <textarea id="article" type="text" placeholder="Publica tu producto"></textarea>
-      <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
-      <button id="publicComent" onclick="saveComent()">Publicar</button>
-      <p>Solo usuarios registrados pueden verlo </p>
-      <section id="userPosts"></section>
-      <button onclick="closeSession()">Cerrar sesión</button>
-
-      <table class="hover">
-         <thead>
-            <tr>
-               <th width="200"> id comentario</th>
-               <th> Comentario</th>
-               <th width="150"> eliminar</th>
-               <th width="150"> editar</th>
-            </tr>
-         </thead>
-         <tbody id="table">
-
-         </tbody>
-      </table>
-   </main>
-
-
+   <!-- Mobile-->
+   <!-- Fixed bottom navbar with home,publish and timeline icons -->
+   <section id="mobile-menu">
+      <section class=" botton-offset-footer"></section>
+      <footer class="mobile-bottom-bar">
+         <a href="/public/index.html" class="footer-link">
+            <span class='footer-text'>Inicio</span><br><i class="fas fa-home fa-2x"></i>
+         </a>
+         <a href="#" class="footer-link">
+            <span class='footer-text'>Publicar</span><br><i class="fas fa-plus-circle fa-2x"></i>
+         </a>
+         <a href="#timeline-app" class="footer-link">
+            <span class='footer-text'>Mi Muro</span><br><i class="far fa-user fa-2x"></i>
+         </a>
+         <button class="footer-link" onclick="closeSession()"><span class='footer-text'>Salir</span><br><i
+               class="fas fa-sign-out-alt fa-2x"></i></button>
+      </footer>
+   </section>
+   
+   <!-- Scripts-->
    <!-- Firebase App is always required and must be first -->
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
    <!-- Add additional services that you want to use -->
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+   <!-- Local scripts -->
    <script src="js/firebase-initialize.js"></script>
    <script src="js/create-new-account.js"></script>
    <script src="js/login-users.js"></script>
@@ -220,9 +224,12 @@
    <script src="js/timeline.js"></script>
    <script src="js/newsfeed.js"></script>
    <script src="js/index.js"></script>
-   <!-- <script src="js/login-style.js"></script> -->
-
-
+   <!-- Foundation Local Scripts -->
+   <script src="js/vendor/jquery.js"></script>
+   <script src="js/vendor/what-input.js"></script>
+   <script src="js/vendor/foundation.js"></script>
+   <script src="js/app.js"></script>
+   <script src="js/router.js"></script>
 </body>
 
 </html>

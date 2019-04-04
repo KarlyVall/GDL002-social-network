@@ -4,17 +4,22 @@
     //   // to the location of paths which do not
     //   // match any of the following routes
     //   //
-    //   page.base('/index');
+    //   // var app = require('../index.js');
+    //   // app.use(express.static('public'));
+    //   // app.use(express.static('files'));
+    
 
-    //   page('/', inicio);
+    //   page.base('/index.html');
+
+    //   page('/public/index.html', inicio);
     //   page('/mimuro', mimuro);
     //   page('/loginaccount', loginsocial);
     //   page('/newaccount', newaccount);
     // //   page('/contact/:contactName', contact);
-    //   page();
+    //   page()
 
     //   function inicio() {
-    //     document.querySelector('#home-app')
+    //     document.getElementById('#crear')
     //       .innerHTML = 'viewing index';
     //   }
 
@@ -37,3 +42,4 @@
     // //     document.querySelector('p')
     // //       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
     // //   }
+    
