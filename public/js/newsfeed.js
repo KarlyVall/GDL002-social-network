@@ -1,5 +1,5 @@
 //Reading post from everyone (newsfeed)
-let newsfeedSection = document.querySelector('#home-app');
+let newsfeedSection = document.querySelector('#panelToSell');
 db.collection("posts").onSnapshot((querySnapshot) => {
   // table.innerHTML = ' ';
   querySnapshot.forEach((doc) => {
