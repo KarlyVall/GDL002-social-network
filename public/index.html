@@ -16,13 +16,17 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
    <!-- Our local styles -->
    <!-- <link rel="stylesheet" href="css/style.css"> -->
+   <link rel="icon" href="favicon (1).ico">
 </head>
 <header>
 
 </header>
 
 <body>
-
+   <!--like botton-->
+   <div id="fb-root"></div>
+   <script async defer crossorigin="anonymous"
+      src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1"></script>
    <div class="form">
       <img class="centrado" src="http://drive.google.com/uc?export=view&id=1c5t-8Akj_63Ni4qtPvktTKnadgf1EF7A">
       <!-- Create new account -->
@@ -130,8 +134,12 @@
       <textarea id="article" type="text" placeholder="Publica tu producto"></textarea>
       <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
       <button id="publicComent" onclick="saveComent()">Publicar</button>
+      <!--like botton-->
+      <div class="fb-like" data-href="https://compartiendo-sonrisas.firebaseio.com/" data-layout="button_count"
+         data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+      
       <p>Solo usuarios registrados pueden verlo </p>
-      <section id="userPosts"></section>
+      <section id="userPosts"></section><br>
       <button onclick="closeSession()">Cerrar sesión</button>
 
 
@@ -139,7 +147,6 @@
          <thead>
             <tr>
                <th width="200"> id comentario</th>
-               <th> Comentario</th>
                <th width="150"> eliminar</th>
                <th width="150"> editar</th>
             </tr>
@@ -147,6 +154,7 @@
          <tbody id="table">
 
          </tbody>
+
       </table>
    </main>
 
@@ -164,7 +172,7 @@
    <script src="js/timeline.js"></script>
    <script src="js/newsfeed.js"></script>
    <!-- <script src="js/login-style.js"></script> -->
-   
+
 
 </body>
 
