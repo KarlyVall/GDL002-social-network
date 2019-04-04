@@ -8,7 +8,8 @@ const saveComent = () => {
     db.collection("posts").add({
       textuser: text,
       typeArticle: type,
-      id: user.uid
+      id: user.uid,
+      email:user.email,
     })
       .then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -75,7 +76,39 @@ const deleteComent = (id) => {
   }).catch(function(error) {
     console.error("Error removing document: ", error);
   });
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false,
+  })
   
+  swalWithBootstrapButtons.fire({
+    title: 'Seguro que deseas eliminarlo?',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si',
+    cancelButtonText: 'No',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.value) {
+      swalWithBootstrapButtons.fire(
+        'Eliminado!',
+        'Tu post se eliminó exitosamente.',
+        'success'
+      )
+    } else if (
+      // Read more about handling dismissals
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Cancelado',
+        'Tu post está a salvo :)',
+        'error'
+      )
+    }
+  })
   }
 
 //Edit posts from newsfeed
