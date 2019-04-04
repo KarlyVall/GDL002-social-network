@@ -32,12 +32,11 @@ const observer = () => {
       // User is signed out.
       // ...
       Swal.fire({
-        title: '¿Salir?',
-        imageUrl: 'http://drive.google.com/uc?export=view&id=1rt-5HhfqbMnBEptD95MNYwejwJrsMuAV',
-        imageWidth: 200,
-        imageHeight: 200,
-        imageAlt: 'Custom image',
-        animation: false
+        position: 'center',
+        type: 'success',
+        title: 'Hasta luego ;)',
+        showConfirmButton: false,
+        timer: 2000
       });
 
     }
