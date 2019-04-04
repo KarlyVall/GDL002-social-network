@@ -8,10 +8,12 @@ const saveComent = () => {
     db.collection("posts").add({
       textuser: text,
       typeArticle: type,
-      id: user.uid
+      id: user.uid, 
+      email : user,
     })
       .then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
+        consult();
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
@@ -25,7 +27,6 @@ let user = firebase.auth().onAuthStateChanged(function (user) {
   let docRef = db.collection("usuarios").doc(user.uid);
   docRef.get().then(function (doc) {
     if (doc.exists) {
-      console.log("Document data:", doc.data());
       tableDocUser.innerHTML = `
       <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
       <p class="cell small-9 user-name">${doc.data().nameUser}<br>${doc.data().emailUser}</p>`
@@ -43,10 +44,8 @@ let tableDoc = document.querySelector('#timelineUser')
 const consult = () => {
   let user = firebase.auth().onAuthStateChanged(function (user) {
     db.collection("posts").where("id", "==", user.uid).get().then((snapshot) => {
+      tableDoc.innerHTML= ' ';
       snapshot.docs.forEach(doc => {
-        //console.log(element.data());
-        //consult(doc);
-        (`${doc.id} => ${doc.data().textuser}`);
         tableDoc.innerHTML += `
     <div class="card">
                <div class="card-section grid-x">
@@ -66,10 +65,11 @@ const consult = () => {
     })
   })
 }
-consult();
+//consult();
 //Delete posts from newsfeed
 const deleteComent = (id) => { 
   db.collection("posts").doc(id).delete().then(function() {
+    
     console.log("Document successfully deleted!");
   }).catch(function(error) {
     console.error("Error removing document: ", error);

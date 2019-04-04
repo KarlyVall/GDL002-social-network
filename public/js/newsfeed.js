@@ -1,9 +1,9 @@
 //Reading post from everyone (newsfeed)
 let newsfeedSection = document.querySelector('#panelToSell');
 db.collection("posts").onSnapshot((querySnapshot) => {
-  // table.innerHTML = ' ';
+  newsfeedSection.innerHTML = ' ';
   querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data().textuser}`);
+      (`${doc.id} => ${doc.data().textuser}`);
       newsfeedSection.innerHTML += `
       <div class="card">
                <div class="card-section grid-x">
