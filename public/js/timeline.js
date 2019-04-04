@@ -69,11 +69,13 @@ const consult = () => {
 consult();
 //Delete posts from newsfeed
 const deleteComent = (id) => { 
-  db.collection("posts").doc(id).delete().then(function() {
+  db.collection("posts").doc(id).delete()
+  .then(function() {
     console.log("Document successfully deleted!");
   }).catch(function(error) {
     console.error("Error removing document: ", error);
   });
+  
   }
 
 //Edit posts from newsfeed

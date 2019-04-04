@@ -6,6 +6,8 @@
    <meta http-equiv="x-ua-compatible" content="ie=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Share a Smile</title>
+   <!--sweetalert-->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.css" rel="stylesheet" />
    <!-- Font Awesome Icons -->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -17,12 +19,10 @@
    <link rel="stylesheet" href="css/foundation.css">
    <link rel="stylesheet" href="css/app.css">
    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet">
-
    <!-- Our local styles -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
-
 <body>
    <p id="crear"></p>
    <!--like botton-->
@@ -61,7 +61,7 @@
    </div>
 
    <!-- Mobile Login with account-->
-   <img src="img/img-logo-login2.png">
+   <img class="image-logo" src="img/img-logo-login2.png">
    <section id="access-screen">
       <div class="sign-in-form">
          <h4 class="text-center">Inicia sesión</h4>
@@ -86,7 +86,7 @@
    </section>
 
 
-   <img src="img/img-logo-login2.png">
+   <img class="image-logo" src="img/img-logo-login2.png">
    <!-- Mobile Login with account-->
    <section id="register-screen">
       <div class="sign-in-form">
@@ -213,10 +213,15 @@
                class="fas fa-sign-out-alt fa-2x"></i></button>
       </footer>
    </section>
-   
+
 
 
    <!-- Scripts-->
+   </script>
+   <!--sweet alerts-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
    <!-- Firebase App is always required and must be first -->
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
    <!-- Add additional services that you want to use -->
