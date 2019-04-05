@@ -16,7 +16,7 @@ const observer = () => {
       let emailVerified = user.emailVerified;
       let photoURL = user.photoURL;
       let isAnonymous = user.isAnonymous;
-      uid = user.uid;
+      let uid = user.uid;
       Swal.fire(
         '¡Bienvenido!',
         'Te haz logueado exitosamente!',
@@ -36,7 +36,7 @@ const observer = () => {
         type: 'success',
         title: 'Hasta luego ;)',
         showConfirmButton: false,
-        timer: 2000
+        timer: 3000
       });
 
     }
