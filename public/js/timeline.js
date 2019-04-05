@@ -8,8 +8,8 @@ const saveComent = () => {
     db.collection("posts").add({
       textuser: text,
       typeArticle: type,
-      id: user.uid, 
-      email : user,
+      id: user.uid,
+      email: user.email,
     })
       .then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -22,11 +22,15 @@ const saveComent = () => {
 }
 
 //Read user data (Email and Name)
+let userData = () => {
 let tableDocUser = document.querySelector('#userInformation');
+console.log(tableDocUser);
 let user = firebase.auth().onAuthStateChanged(function (user) {
   let docRef = db.collection("usuarios").doc(user.uid);
   docRef.get().then(function (doc) {
     if (doc.exists) {
+      console.log("Estoy viendo user");
+      console.log("Document data:", doc.data());
       tableDocUser.innerHTML = `
       <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
       <p class="cell small-9 user-name">${doc.data().nameUser}<br>${doc.data().emailUser}</p>`
@@ -38,10 +42,55 @@ let user = firebase.auth().onAuthStateChanged(function (user) {
     console.log("Error getting document:", error);
   })
 })
+}
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false,
+});
+
+let deleteSweet = (id) => {    
+swalWithBootstrapButtons.fire({
+  title: 'Seguro que deseas eliminarlo?',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Si',
+  cancelButtonText: 'No',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    db.collection("posts").doc(id).delete().then(function() {
+          console.log("Document successfully deleted!");
+        }).catch(function(error) {
+          console.error("Error removing document: ", error);
+        });
+    swalWithBootstrapButtons.fire(
+      'Eliminado!',
+      'Tu post se eliminó exitosamente.',
+      'success'
+    )
+  } else if (
+    // Read more about handling dismissals
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelado',
+      'Tu post está a salvo :)',
+      'error'
+    )
+  }
+})
+}
 
 //Read owner account posts (timeline)
-let tableDoc = document.querySelector('#timelineUser')
+
 const consult = () => {
+  console.log('Ver consult');
+  let tableDoc = document.querySelector('#panelTimeline');
+  
   let user = firebase.auth().onAuthStateChanged(function (user) {
     db.collection("posts").where("id", "==", user.uid).get().then((snapshot) => {
       tableDoc.innerHTML= ' ';
@@ -57,7 +106,7 @@ const consult = () => {
                 <span class="cell small-12 post-text">${doc.data().textuser}</span>
                </div>
                <div class="grid-x">
-               <button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar</button>
+               <button type="button" class="alert button" onclick = "deleteSweet('${doc.id}')"> Eliminar</button>
               <button type="button" class="success button" onclick = "editComent('${doc.id}','${doc.data().textuser}','${doc.data().typeArticle}')"> Editar </button>
             </div>`
       });
@@ -65,19 +114,61 @@ const consult = () => {
     })
   })
 }
-consult();
+// consult();
+//Delete Sweet
+
+// const swalWithBootstrapButtons = Swal.mixin({
+//       customClass: {
+//         confirmButton: 'btn btn-success',
+//         cancelButton: 'btn btn-danger'
+//       },
+//       buttonsStyling: false,
+//     });
+
+// let deleteSweet = (id) => {    
+//     swalWithBootstrapButtons.fire({
+//       title: 'Seguro que deseas eliminarlo?',
+//       type: 'warning',
+//       showCancelButton: true,
+//       confirmButtonText: 'Si',
+//       cancelButtonText: 'No',
+//       reverseButtons: true
+//     }).then((result) => {
+//       if (result.value) {
+//         db.collection("posts").doc(id).delete().then(function() {
+//               console.log("Document successfully deleted!");
+//             }).catch(function(error) {
+//               console.error("Error removing document: ", error);
+//             });
+//         swalWithBootstrapButtons.fire(
+//           'Eliminado!',
+//           'Tu post se eliminó exitosamente.',
+//           'success'
+//         )
+//       } else if (
+//         // Read more about handling dismissals
+//         result.dismiss === Swal.DismissReason.cancel
+//       ) {
+//         swalWithBootstrapButtons.fire(
+//           'Cancelado',
+//           'Tu post está a salvo :)',
+//           'error'
+//         )
+//       }
+//     })
+// }
 
 
+// //Delete posts from newsfeed
+// const deleteComent = (id) => { 
+//   db.collection("posts").doc(id).delete().then(function() {
+//     console.log("Document successfully deleted!");
+//   }).catch(function(error) {
+//     console.error("Error removing document: ", error);
+//   });
+//   }
 
-//Delete posts from newsfeed
-const deleteComent = (id) => { 
-  db.collection("posts").doc(id).delete().then(function() {
-    
-    console.log("Document successfully deleted!");
-  }).catch(function(error) {
-    console.error("Error removing document: ", error);
-  });
-  }
+
 
 //Edit posts from newsfeed
 
@@ -112,6 +203,13 @@ const editComent = (id, text, article) => {
 const closeSession = () => {
   firebase.auth().signOut()
     .then(function () {
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: 'Hasta luego ;)',
+        showConfirmButton: false,
+        timer: 1500
+      });
       console.log('saliendo...');
       // document.getElementById('title-bar-menu').className = "invisible";
       // document.getElementById('mobile-menu').className = "invisible";

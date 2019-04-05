@@ -1,9 +1,12 @@
 //Reading post from everyone (newsfeed)
-let newsfeedSection = document.querySelector('#panelToSell');
+
+const newsFeedJs = () => {
+   let newsfeedSection = document.querySelector('#panelToSell');
+   console.log(newsfeedSection);
+
 db.collection("posts").onSnapshot((querySnapshot) => {
   newsfeedSection.innerHTML = ' ';
   querySnapshot.forEach((doc) => {
-      (`${doc.id} => ${doc.data().textuser}`);
       newsfeedSection.innerHTML += `
       <div class="card">
                <div class="card-section grid-x">
@@ -20,21 +23,5 @@ db.collection("posts").onSnapshot((querySnapshot) => {
       </div>
       `
   });
-});
-
-// let tableDoc = document.querySelector('#panelToSell');
-// db.collection("posts").onSnapshot((querySnapshot) => {
-//   tableDoc.innerHTML = ' ';
-//   querySnapshot.forEach((doc) => {
-//       console.log(`${doc.id} => ${doc.data().textuser}`);
-//       tableDoc.innerHTML += `
-//       <tr>
-//         <th>${doc.id}</th>
-//         <th>${doc.data().textuser}</th>
-//         <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar </button></th>
-//         <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button></th>
-//       </tr>
-//       `
-
-//   });
-// });
+})
+}

@@ -2,10 +2,6 @@
 const observer = () => {
   firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        // document.getElementById('title-bar-menu').className = "title-bar";
-        // document.getElementById('mobile-menu').className = "visible";
-        // document.getElementById('access-screen').className = "invisible";
-        // document.getElementById('home-app').className = "visible";
         
         console.log('existe usuario');
           // show()
@@ -31,4 +27,3 @@ const observer = () => {
 }
 
 observer();
-
