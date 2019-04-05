@@ -4,8 +4,10 @@ const newsFeedJs = () => {
    let newsfeedSection = document.querySelector('#panelToSell');
    //console.log(newsfeedSection);
    db.collection("posts").onSnapshot((querySnapshot) => {
-   newsfeedSection.innerHTML = ' ';
-   querySnapshot.forEach((doc) => {
+
+   newsfeedSection.innerHTML = '';
+   querySnapshot.docs.forEach((doc) => {
+
       newsfeedSection.innerHTML += `
       <div class="card">
                <div class="card-section grid-x">

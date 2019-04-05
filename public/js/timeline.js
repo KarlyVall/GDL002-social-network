@@ -12,10 +12,12 @@ const saveComent = () => {
       email: user.email,
     })
       .then(function (docRef) {
+
         document.querySelector('#article').value= '';
         document.querySelector('#categorieArticle').value = '';
         console.log("Document written with ID: ", docRef.id);
         consult();
+
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
@@ -26,7 +28,6 @@ const saveComent = () => {
 //Read user data (Email and Name)
 let userData = () => {
 let tableDocUser = document.querySelector('#userInformation');
-// console.log(tableDocUser);
 let user = firebase.auth().onAuthStateChanged(function (user) {
   let docRef = db.collection("usuarios").doc(user.uid);
   docRef.get().then(function (doc) {
@@ -91,11 +92,13 @@ swalWithBootstrapButtons.fire({
 
 const consult = () => {
   console.log('Ver consult');
-  let tableDoc = document.querySelector('#panelTimeline');
+
+  let tableDoc = document.querySelector('#timelineUser');
   let user = firebase.auth().onAuthStateChanged(function (user) {
     db.collection("posts").where("id", "==", user.uid).onSnapshot((querySnapshot) => {
-      tableDoc.innerHTML= ' ';
+      tableDoc.innerHTML = ' ';
       querySnapshot.docs.forEach(doc => {
+
         tableDoc.innerHTML += `
     <div class="card">
                <div class="card-section grid-x">
@@ -180,11 +183,12 @@ const editComent = (id, text, article) => {
   let button = document.querySelector('#publicComent');
   button.innerHTML = 'Guardar'
   button.onclick = function () {
+
     let postUsers = db.collection("posts").doc(id);
 
     let articleEdit = document.querySelector('#categorieArticle').value;
     let textEdit = document.querySelector('#article').value.toLowerCase();
-    
+
     return postUsers.update({
       textuser : textEdit,
       typeArticle : articleEdit,
