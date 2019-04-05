@@ -26,4 +26,8 @@ const observer = () => {
     
 }
 
+<<<<<<< HEAD
 observer();
+=======
+observer();
+>>>>>>> de1b90585ccdb943471b0c1c3a5cabc8e108bdbc
