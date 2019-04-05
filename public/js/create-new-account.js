@@ -24,7 +24,6 @@ const register = () => {
 }
 //Add user´s data
 const saveData = () => {
-    console.log('estoy con save data');
     let email = document.querySelector('#email').value;
     let name = document.querySelector('#user').value;
     let password = document.querySelector('#password').value;
