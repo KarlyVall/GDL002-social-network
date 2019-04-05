@@ -1,0 +1,37 @@
+<div class="sign-in-form">
+        <h4 class="text-center">Crea tu cuenta</h4>
+        <!-- User name new account input-->
+        <label for="sign-in-form-username">Nombre/Nickname</label>
+        <input id="user" type="text" required autocomplete="off" />
+        
+        <!-- Email new account input-->
+        <label for="sign-in-form-username">Email</label>
+        <input id="email" type="email" required autocomplete="off" />
+
+        <!-- Password new account input-->
+        <label for="sign-in-form-password">Contraseña</label>
+        <input id="password" type="password" required autocomplete="off" />
+
+
+        <button onclick="register()" type="submit" class="sign-in-form-button"><a href="#home-app-newsfeed">Crear mi cuenta</a></button>
+     </div>
+
+     <div class="text-center text-upper"><span>Ó crea una cuenta con</span></div>
+     <div id="wrapper">
+        <span class="text-center">
+           <button onclick="authAccountFacebook()" type="button" class="button social facebook">
+              <i class="fab fa-facebook fa-lg"></i>
+           </button>
+           <button onclick="loginGoogle()" type="button" class="button social google-plus">
+              <i class="fab fa-google fa-lg"></i>
+           </button>
+     </div>
+     <div class="text-center"><span>¿Ya tienes cuenta? <a href="#access-screen">Inicia sesión aquí</a></span></div>
+
+     <div id="navbar" style="display:none;">
+         <a href="#access-screen">Iniciar sesión</a>
+         <a href="#register-screen">Registrarse</a>
+         <a href="#home-app-newsfeed">Newsfeed</a>
+         <a href="#timeline-app">Timeline</a>
+         <a href="#access-screen">Salir</a>
+   </div>

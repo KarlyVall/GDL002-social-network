@@ -6,8 +6,13 @@ const register = () => {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then (function(){
-        verify ()
-        saveData()
+      Swal.fire(
+        '¡Bienvenido!',
+        'Tu cuenta se ha creado exitosamente',
+        'success'
+      );
+        verify ();
+        saveData();
     })
     .catch(function(error) {
         // Handle Errors here.
