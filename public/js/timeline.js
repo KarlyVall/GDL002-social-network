@@ -43,6 +43,47 @@ let user = firebase.auth().onAuthStateChanged(function (user) {
 })
 }
 
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false,
+});
+
+let deleteSweet = (id) => {    
+swalWithBootstrapButtons.fire({
+  title: 'Seguro que deseas eliminarlo?',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Si',
+  cancelButtonText: 'No',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    db.collection("posts").doc(id).delete().then(function() {
+          console.log("Document successfully deleted!");
+        }).catch(function(error) {
+          console.error("Error removing document: ", error);
+        });
+    swalWithBootstrapButtons.fire(
+      'Eliminado!',
+      'Tu post se eliminó exitosamente.',
+      'success'
+    )
+  } else if (
+    // Read more about handling dismissals
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelado',
+      'Tu post está a salvo :)',
+      'error'
+    )
+  }
+})
+}
+
 //Read owner account posts (timeline)
 
 const consult = () => {
@@ -66,7 +107,7 @@ const consult = () => {
                 <span class="cell small-12 post-text">${doc.data().textuser}</span>
                </div>
                <div class="grid-x">
-               <button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar</button>
+               <button type="button" class="alert button" onclick = "deleteSweet('${doc.id}')"> Eliminar</button>
               <button type="button" class="success button" onclick = "editComent('${doc.id}','${doc.data().textuser}','${doc.data().typeArticle}')"> Editar </button>
             </div>`
       });
@@ -75,14 +116,60 @@ const consult = () => {
   })
 }
 // consult();
-//Delete posts from newsfeed
-const deleteComent = (id) => { 
-  db.collection("posts").doc(id).delete().then(function() {
-    console.log("Document successfully deleted!");
-  }).catch(function(error) {
-    console.error("Error removing document: ", error);
-  });
-  }
+//Delete Sweet
+
+// const swalWithBootstrapButtons = Swal.mixin({
+//       customClass: {
+//         confirmButton: 'btn btn-success',
+//         cancelButton: 'btn btn-danger'
+//       },
+//       buttonsStyling: false,
+//     });
+
+// let deleteSweet = (id) => {    
+//     swalWithBootstrapButtons.fire({
+//       title: 'Seguro que deseas eliminarlo?',
+//       type: 'warning',
+//       showCancelButton: true,
+//       confirmButtonText: 'Si',
+//       cancelButtonText: 'No',
+//       reverseButtons: true
+//     }).then((result) => {
+//       if (result.value) {
+//         db.collection("posts").doc(id).delete().then(function() {
+//               console.log("Document successfully deleted!");
+//             }).catch(function(error) {
+//               console.error("Error removing document: ", error);
+//             });
+//         swalWithBootstrapButtons.fire(
+//           'Eliminado!',
+//           'Tu post se eliminó exitosamente.',
+//           'success'
+//         )
+//       } else if (
+//         // Read more about handling dismissals
+//         result.dismiss === Swal.DismissReason.cancel
+//       ) {
+//         swalWithBootstrapButtons.fire(
+//           'Cancelado',
+//           'Tu post está a salvo :)',
+//           'error'
+//         )
+//       }
+//     })
+// }
+
+
+// //Delete posts from newsfeed
+// const deleteComent = (id) => { 
+//   db.collection("posts").doc(id).delete().then(function() {
+//     console.log("Document successfully deleted!");
+//   }).catch(function(error) {
+//     console.error("Error removing document: ", error);
+//   });
+//   }
+
+
 
 //Edit posts from newsfeed
 

@@ -22,37 +22,40 @@
 // }
 // });
 // }
-const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success',
-      cancelButton: 'btn btn-danger'
-    },
-    buttonsStyling: false,
-  });
-  
-  swalWithBootstrapButtons.fire({
-    title: 'Seguro que deseas eliminarlo?',
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Si',
-    cancelButtonText: 'No',
-    reverseButtons: true
-  }).then((result) => {
-    if (result.value) {
-      swalWithBootstrapButtons.fire(
-        'Eliminado!',
-        'Tu post se eliminó exitosamente.',
-        'success'
-      )
-    } else if (
-      // Read more about handling dismissals
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
-      swalWithBootstrapButtons.fire(
-        'Cancelado',
-        'Tu post está a salvo :)',
-        'error'
-      )
-    }
-  })
+// let deleteSweet = () => {
+//     const swalWithBootstrapButtons = Swal.mixin({
+//         customClass: {
+//           confirmButton: 'btn btn-success',
+//           cancelButton: 'btn btn-danger'
+//         },
+//         buttonsStyling: false,
+//       });
+      
+//       swalWithBootstrapButtons.fire({
+//         title: 'Seguro que deseas eliminarlo?',
+//         type: 'warning',
+//         showCancelButton: true,
+//         confirmButtonText: 'Si',
+//         cancelButtonText: 'No',
+//         reverseButtons: true
+//       }).then((result) => {
+//         if (result.value) {
+//           swalWithBootstrapButtons.fire(
+//             'Eliminado!',
+//             'Tu post se eliminó exitosamente.',
+//             'success'
+//           )
+//         } else if (
+//           // Read more about handling dismissals
+//           result.dismiss === Swal.DismissReason.cancel
+//         ) {
+//           swalWithBootstrapButtons.fire(
+//             'Cancelado',
+//             'Tu post está a salvo :)',
+//             'error'
+//           )
+//         }
+//       })
+// }
+
   
