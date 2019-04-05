@@ -6,7 +6,11 @@ const login =  () => {
     firebase.auth().signInWithEmailAndPassword(newEmail, newPassword)
     .then(function(){
       newsFeedJs();
-      
+      Swal.fire(
+        '¡Bienvenido!',
+        'Te haz logueado exitosamente!',
+        'success'
+      );
     })
     .catch(function(error) {
         // Handle Errors here.

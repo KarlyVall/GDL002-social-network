@@ -117,6 +117,13 @@ const editComent = (id, text, article) => {
 const closeSession = () => {
   firebase.auth().signOut()
     .then(function () {
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: 'Hasta luego ;)',
+        showConfirmButton: false,
+        timer: 1500
+      });
       console.log('saliendo...');
       // document.getElementById('title-bar-menu').className = "invisible";
       // document.getElementById('mobile-menu').className = "invisible";
