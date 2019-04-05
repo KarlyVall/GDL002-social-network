@@ -6,225 +6,115 @@
    <meta http-equiv="x-ua-compatible" content="ie=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Share a Smile</title>
-   <!--Google fonts-->
+   <link rel="icon" href="img/favicon (1).ico">
+   <!--google fonts-->
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-   <!--sweetalert-->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.css" rel="stylesheet" />
    <!-- Font Awesome Icons -->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-   <!-- Page JS -->
-   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+   <!--Sweetalert-->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.css" rel="stylesheet" />
    <!-- Foundation Links -->
 
    <!-- Insert this within your head tag and after foundation.css -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
    <link rel="stylesheet" href="css/foundation.css">
-   <link rel="stylesheet" href="css/app.css">
-   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet">
+   <link rel="stylesheet" href="css/foundation.min.css">
    <!-- Our local styles -->
    <link rel="stylesheet" href="css/style.css">
 
+
 </head>
+
 <body>
-   <p id="crear"></p>
-   <!--like botton-->
-   <div id="fb-root"></div>
-   <script async defer crossorigin="anonymous"
-      src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1"></script>
-   <!-- Desktop Menu-->
-   <!-- Sticky Menu-->
-   <div class="hide-for-small-only hide-for-medium-only" data-sticky-container>
-      <div class="top-bar" data-sticky data-margin-top="0" id="example-menu">
-         <div class="top-bar-left">
-            <ul class="menu">
-               <li class="menu-text">Site Title</li>
-            </ul>
-         </div>
-         <div class="top-bar-right">
-            <ul class="menu" data-magellan>
-               <li><a href="#first">One</a></li>
-               <li><a href="#second">Two</a></li>
-               <li><a href="#third">Three</a></li>
-            </ul>
-         </div>
-      </div>
-   </div>
-   <!-- Desktop Content-->
-   <!-- Add content where magellan will be linked -->
-   <div class="sections hide-for-small-only hide-for-medium-only">
-      <section id="first" data-magellan-target="first"></section>
-      <section id="second" data-magellan-target="second"></section>
-      <section id="third" data-magellan-target="third"></section>
-   </div>
-
-   <!-- Mobile logo bar-->
-   <!-- Sticky bar-->
-   <div id="title-bar-menu" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
-   </div>
-
-   <!-- Mobile Login with account-->
-   <img class="image-logo" src="img/img-logo-login2.png">
-   <section id="access-screen">
-      <div class="sign-in-form">
-         <h4 class="text-center">Inicia sesión</h4>
-         <label for="sign-in-form-username">Usuario o Email</label>
-         <input type="text" id="new-email" placeholder="Tu correo" />
-         <label for="sign-in-form-password">Contraseña</label>
-         <input type="password" id="new-password" placeholder="Tu contraseña" />
-         <button onclick="login()" type="submit" class="sign-in-form-button">Ingresar</button>
-      </div>
-
-      <div class="text-center text-upper"><span>Ó inicia sesión con</span></div>
-      <div id="wrapper">
-         <span class="text-center">
-            <button onclick="authAccountFacebook()" type="button" class="button social facebook">
-               <i class="fab fa-facebook fa-lg"></i>
-            </button>
-            <button onclick="loginGoogle()" type="button" class="button social google-plus">
-               <i class="fab fa-google fa-lg"></i>
-            </button>
-      </div>
-      <div class="text-center"><span>¿No tienes cuenta? <a href="#register-screen">Crea una aquí</a></span></div>
-   </section>
-
-
-   <img class="image-logo" src="img/img-logo-login2.png">
-   <!-- Mobile Login with account-->
-   <section id="register-screen">
-      <div class="sign-in-form">
-         <h4 class="text-center">Crea tu cuenta</h4>
-         <!-- User name new account input-->
-         <label for="sign-in-form-username">Nombre/Nickname</label>
-         <input id="user" type="text" required autocomplete="off" />
-
-         <!-- Email new account input-->
-         <label for="sign-in-form-username">Email</label>
-         <input id="email" type="email" required autocomplete="off" />
-
-         <!-- Password new account input-->
-         <label for="sign-in-form-password">Contraseña</label>
-         <input id="password" type="password" required autocomplete="off" />
-
-
-         <button onclick="register()" type="submit" class="sign-in-form-button">Crear mi cuenta</button>
-      </div>
-
-      <div class="text-center text-upper"><span>Ó crea una cuenta con</span></div>
-      <div id="wrapper">
-         <span class="text-center">
-            <button onclick="authAccountFacebook()" type="button" class="button social facebook">
-               <i class="fab fa-facebook fa-lg"></i>
-            </button>
-            <button onclick="loginGoogle()" type="button" class="button social google-plus">
-               <i class="fab fa-google fa-lg"></i>
-            </button>
-      </div>
-      <div class="text-center"><span>¿Ya tienes cuenta? <a href="#access-screen">Inicia sesión aquí</a></span></div>
-   </section>
-
-
-   <!-- Mobile HOME NEWSFEED 1# HASH-->
-   <section id="home-app">
-      <ul class="tabs grid-x" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
-         data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
-         <li class="tabs-title is-active cell small-6"><a href="#panelToSell" aria-selected="true">Venta</a></li>
-         <li class="tabs-title cell small-6"><a href="#panelToDonate">Donación</a></li>
-      </ul>
-      <!-- Mobile-->
-      <!-- Tabs for newsfeed, Vender o Donar -->
-
-      <div class="tabs-content" data-tabs-content="deeplinked-tabs">
-         <!-- Tab Vender -->
-         <div class="tabs-panel is-active" id="panelToSell">
-            <!-- Posts timeline selling -->
-         </div>
-         <!-- Tab Donar -->
-         <div class="tabs-panel" id="panelToDonate">
-            <!-- Posts timeline donating -->
-         </div>
-      </div>
-   </section>
-
-
-
-   <!-- Mobile TIMELINE 2# HASH-->
-   <section id="timeline-app">
-      <ul class="tabs grid-x" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
-         data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
-         <li class="tabs-title is-active cell small-6"><a href="#panelTimeline" aria-selected="true">Mi Muro</a></li>
-         <li class="tabs-title cell small-6"><a href="#panelProducts">Mis Productos</a></li>
-      </ul>
-      <!-- Mobile-->
-      <!-- Tabs for timeline, Vender o Donar -->
-      <div class="tabs-content" data-tabs-content="deeplinked-tabs">
-         <!-- Tab Timeline -->
-         <div class="tabs-panel is-active" id="panelTimeline">
-            <!-- To Post -->
-            <div class="card">
-               <div id="userInformation" class="card-section grid-x">
-
-               </div>
-               <div class="grid-x">
-                  <textarea id="article" type="text" placeholder="Publica tu producto" style="height: 8em;"></textarea>
-                  <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
-                  <button id="publicComent" onclick="saveComent()" class="button cell small-12">Publicar</button>
-               </div>
+   <main id="content">
+      <!-- like botton
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous"
+         src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1"></script> -->
+      <!-- Desktop Menu-->
+      <!-- Sticky Menu-->
+      <!-- <div class="hide-for-small-only hide-for-medium-only" data-sticky-container>
+         <div class="top-bar" data-sticky data-margin-top="0" id="example-menu">
+            <div class="top-bar-left">
+               <ul class="menu">
+                  <li class="menu-text">Site Title</li>
+               </ul>
+            </div>
+            <div class="top-bar-right">
+               <ul class="menu" data-magellan>
+                  <li><a href="#first">One</a></li>
+                  <li><a href="#second">Two</a></li>
+                  <li><a href="#third">Three</a></li>
+               </ul>
             </div>
          </div>
-         <!-- Post in timeline -->
-         <section id="timelineUser">
+      </div> -->
+      <!-- Desktop Content-->
+      <!-- Add content where magellan will be linked -->
+      <!-- <div class="sections hide-for-small-only hide-for-medium-only">
+         <section id="first" data-magellan-target="first"></section>
+         <section id="second" data-magellan-target="second"></section>
+         <section id="third" data-magellan-target="third"></section>
+      </div> -->
 
-         </section>
+      <!-- Mobile logo bar-->
+      <!-- Sticky bar-->
+      <!-- <div id="title-bar-menu" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+   </div> -->
+
+      <!-- Mobile ACCESS SCREEN HASH-->
+      <section id="access-screen">
+
+      </section>
+      <!-- Mobile create new account-->
+      <section id="register-screen">
+
+      </section>
+
+
+      <!-- Mobile HOME NEWSFEED 1# HASH-->
+      <section id="home-app-newsfeed">
+
+      </section>
+
+      <!-- Mobile TIMELINE HASH-->
+      <section id="timeline-app">
+
+
+      </section>
+
+      <div id="navbar" style="display:none;">
+         <a href="#access-screen">Iniciar sesión</a>
+         <a href="#register-screen">Registrarse</a>
+         <a href="#home-app-newsfeed">Newsfeed</a>
+         <a href="#timeline-app">Timeline</a>
+         <a href="#access-screen">Salir</a>
       </div>
 
-      <!-- Tabs Mis productos (siguiente iteración) -->
-      <div class="tabs-panel" id="panelProducts">
-         <!-- Posts timeline
-            <div class="card">
-               <div class="card-section grid-x">
-                  <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
-                  <p class="cell small-9 user-name">Nombre del Usuario<br>Categoría: Donación</p>
-                  <p class="cell small-1 see-more"><i class="fas fa-ellipsis-v fa-lg"></i></p>
-               </div>
-               <div class="grid-x">
-                  <span class="cell small-12 post-text">Nombre del Usuario Nombre del Usuario Nombre del Usuario Nombre
-                     del Usuario Nombre del Usuario Nombre del Usuario</span>
-                  <a href="about.html" class="button cell small-12">Publicar</a>
-               </div>
-            </div> -->
-      </div>
-      </div>
+      <!-- Fixed bottom navbar with home,publish and timeline icons -->
+      <section id="mobile-menu">
+         <section class=" botton-offset-footer"></section>
+         <footer class="mobile-bottom-bar">
+            <a href="#home-app-newsfeed" class="footer-link">
+               <span class='footer-text'>Inicio</span><br><i class="fas fa-home fa-2x"></i>
+            </a>
+            <a href="#content" class="footer-link">
+               <span class='footer-text'>Publicar</span><br><i class="fas fa-plus-circle fa-2x"></i>
+            </a>
+            <a href="#timeline-app" class="footer-link">
+               <span class='footer-text'>Mi Muro</span><br><i class="far fa-user fa-2x"></i>
+            </a>
+            <a href="#access-screen" onclick="closeSession()" class="footer-link">
+               <span class='footer-text'>Salir</span><br><i class="fas fa-sign-out-alt fa-2x"></i>
+            </a>
+            <button class="footer-link"><span class='footer-text'>Salir</span><br><i
+                  class="fas fa-sign-out-alt fa-2x"></i></button>
+         </footer>
 
-   </section>
-
-   <!-- Mobile-->
-   <!-- Fixed bottom navbar with home,publish and timeline icons -->
-   <section id="mobile-menu">
-      <section class=" botton-offset-footer"></section>
-      <footer class="mobile-bottom-bar">
-         <a href="/public/index.html" class="footer-link">
-            <span class='footer-text'>Inicio</span><br><i class="fas fa-home fa-2x"></i>
-         </a>
-         <a href="#" class="footer-link">
-            <span class='footer-text'>Publicar</span><br><i class="fas fa-plus-circle fa-2x"></i>
-         </a>
-         <a href="#timeline-app" class="footer-link">
-            <span class='footer-text'>Mi Muro</span><br><i class="far fa-user fa-2x"></i>
-         </a>
-         <button class="footer-link" onclick="closeSession()"><span class='footer-text'>Salir</span><br><i
-               class="fas fa-sign-out-alt fa-2x"></i></button>
-      </footer>
-   </section>
-
-
-
+      </section>
+   </main>
    <!-- Scripts-->
-   </script>
-   <!--sweet alerts-->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
    <!-- Firebase App is always required and must be first -->
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
    <!-- Add additional services that you want to use -->
@@ -232,6 +122,11 @@
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
    <!-- Local scripts -->
+   <!--Sweet alerts-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+   <!--Scripts de Firebase-->
    <script src="js/firebase-initialize.js"></script>
    <script src="js/create-new-account.js"></script>
    <script src="js/login-users.js"></script>
@@ -244,7 +139,8 @@
    <script src="js/vendor/what-input.js"></script>
    <script src="js/vendor/foundation.js"></script>
    <script src="js/app.js"></script>
-   <script src="js/router.js"></script>
+   <!-- SPA APK -->
+   <script src="js/spa.js"></script>
 </body>
 
 </html>

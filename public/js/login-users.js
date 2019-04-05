@@ -3,7 +3,16 @@ const login =  () => {
     let newEmail =document.getElementById('new-email').value;
     let newPassword = document.getElementById('new-password').value;
 
-    firebase.auth().signInWithEmailAndPassword(newEmail, newPassword).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(newEmail, newPassword)
+    .then(function(){
+      newsFeedJs();
+      Swal.fire(
+        '¡Bienvenido!',
+        'Te haz logueado exitosamente!',
+        'success'
+      );
+    })
+    .catch(function(error) {
         // Handle Errors here.
         let errorCode = error.code;
 
@@ -18,6 +27,7 @@ const verify = () => {
     let user = firebase.auth().currentUser;
 
 user.sendEmailVerification().then(function() {
+  newsFeedJs();
   // Email sent.
   console.log('enviando correo...');
   
