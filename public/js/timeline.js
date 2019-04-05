@@ -65,7 +65,10 @@ const consult = () => {
     })
   })
 }
-//consult();
+consult();
+
+
+
 //Delete posts from newsfeed
 const deleteComent = (id) => { 
   db.collection("posts").doc(id).delete().then(function() {

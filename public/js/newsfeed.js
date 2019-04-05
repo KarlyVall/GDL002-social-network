@@ -21,3 +21,20 @@ db.collection("posts").onSnapshot((querySnapshot) => {
       `
   });
 });
+
+// let tableDoc = document.querySelector('#panelToSell');
+// db.collection("posts").onSnapshot((querySnapshot) => {
+//   tableDoc.innerHTML = ' ';
+//   querySnapshot.forEach((doc) => {
+//       console.log(`${doc.id} => ${doc.data().textuser}`);
+//       tableDoc.innerHTML += `
+//       <tr>
+//         <th>${doc.id}</th>
+//         <th>${doc.data().textuser}</th>
+//         <th><button type="button" class="alert button" onclick = "deleteComent('${doc.id}')"> Eliminar </button></th>
+//         <th><button type="button" class="success button" onclick = "editComent('${doc.id}', '${doc.data().textuser}')" > Editar </button></th>
+//       </tr>
+//       `
+
+//   });
+// });
