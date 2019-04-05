@@ -16,8 +16,7 @@ const observer = () => {
         let emailVerified = user.emailVerified;
         let photoURL = user.photoURL;
         let isAnonymous = user.isAnonymous;
-        uid = user.uid;
-        console.log(uid);
+        let uid = user.uid;
         let providerData = user.providerData;
         //createUserDatabase (email, uid)
         // ...

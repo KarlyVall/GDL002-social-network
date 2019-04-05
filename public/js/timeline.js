@@ -8,7 +8,8 @@ const saveComent = () => {
     db.collection("posts").add({
       textuser: text,
       typeArticle: type,
-      id: user.uid
+      id: user.uid,
+      email: user.email,
     })
       .then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -20,11 +21,14 @@ const saveComent = () => {
 }
 
 //Read user data (Email and Name)
+let userData = () => {
 let tableDocUser = document.querySelector('#userInformation');
+console.log(tableDocUser);
 let user = firebase.auth().onAuthStateChanged(function (user) {
   let docRef = db.collection("usuarios").doc(user.uid);
   docRef.get().then(function (doc) {
     if (doc.exists) {
+      console.log("Estoy viendo user");
       console.log("Document data:", doc.data());
       tableDocUser.innerHTML = `
       <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
@@ -37,10 +41,14 @@ let user = firebase.auth().onAuthStateChanged(function (user) {
     console.log("Error getting document:", error);
   })
 })
+}
 
 //Read owner account posts (timeline)
-let tableDoc = document.querySelector('#timelineUser')
+
 const consult = () => {
+  console.log('Ver consult');
+  let tableDoc = document.querySelector('#panelTimeline');
+  
   let user = firebase.auth().onAuthStateChanged(function (user) {
     db.collection("posts").where("id", "==", user.uid).get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
@@ -66,7 +74,7 @@ const consult = () => {
     })
   })
 }
-consult();
+// consult();
 //Delete posts from newsfeed
 const deleteComent = (id) => { 
   db.collection("posts").doc(id).delete().then(function() {

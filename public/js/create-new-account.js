@@ -6,8 +6,8 @@ const register = () => {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then (function(){
-        verify ()
-        saveData()
+        verify ();
+        saveData();
     })
     .catch(function(error) {
         // Handle Errors here.

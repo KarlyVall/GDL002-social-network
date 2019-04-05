@@ -1,0 +1,77 @@
+<!-- Top color bar with no function -->
+<div id="title-bar-menu" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+</div>
+
+<ul class="tabs grid-x" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
+   data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
+   <li class="tabs-title is-active cell small-6"><a href="#panelTimeline" aria-selected="true">Mi Muro</a></li>
+   <li class="tabs-title cell small-6"><a href="#panelProducts">Mis Productos</a></li>
+</ul>
+<!-- Mobile-->
+<!-- Tabs for timeline, Vender o Donar -->
+<div class="tabs-content" data-tabs-content="deeplinked-tabs">
+   <!-- Tab Timeline -->
+   <div class="tabs-panel is-active" id="panelTimeline">
+      <!-- To Post -->
+      <div class="card">
+         
+         <div id="userInformation" class="card-section grid-x"></div>
+         
+         <div class="grid-x">
+            <textarea id="article" type="text" placeholder="Publica tu producto" style="height: 8em;"></textarea>
+            <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
+            <button id="publicComent" onclick="saveComent()" class="button cell small-12">Publicar</button>
+         </div>
+      </div>
+   </div>
+   <!-- Post in timeline -->
+   <section id="timelineUser">
+      
+   </section>
+</div>
+
+<!-- Tabs Mis productos (siguiente iteración) -->
+<div class="tabs-panel" id="panelProducts">
+   <!-- Posts timeline
+            <div class="card">
+               <div class="card-section grid-x">
+                  <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
+                  <p class="cell small-9 user-name">Nombre del Usuario<br>Categoría: Donación</p>
+                  <p class="cell small-1 see-more"><i class="fas fa-ellipsis-v fa-lg"></i></p>
+               </div>
+               <div class="grid-x">
+                  <span class="cell small-12 post-text">Nombre del Usuario Nombre del Usuario Nombre del Usuario Nombre
+                     del Usuario Nombre del Usuario Nombre del Usuario</span>
+                  <a href="about.html" class="button cell small-12">Publicar</a>
+               </div>
+            </div> -->
+</div>
+</div>
+<div id="navbar">
+      <a href="#access-screen">Iniciar sesión</a>
+      <a href="#register-screen">Registrarse</a>
+      <a href="#home-app-newsfeed" onclick="newsFeedJs()">Newsfeed</a>
+      <a href="#timeline-app" onclick="userData(); consult()">Timeline</a>
+      <a href="#access-screen">Salir</a>
+</div>
+<!--Mobile Menu-->
+<section id="mobile-menu">
+   <section class=" botton-offset-footer"></section>
+   <footer class="mobile-bottom-bar">
+      <a href="#home-app-newsfeed" onclick="newsFeedJs()" class="footer-link">
+         <span class='footer-text'>Inicio</span><br><i class="fas fa-home fa-2x"></i>
+      </a>
+      <a href="#content" class="footer-link">
+         <span class='footer-text'>Publicar</span><br><i class="fas fa-plus-circle fa-2x"></i>
+      </a>
+      <a href="#timeline-app" onclick="userData(); consult()" class="footer-link">
+         <span class='footer-text'>Mi Muro</span><br><i class="far fa-user fa-2x"></i>
+      </a>
+      <a href="#access-screen" onclick="closeSession()" class="footer-link">
+         <span class='footer-text'>Salir</span><br><i class="fas fa-sign-out-alt fa-2x"></i>
+      </a>
+   </footer>
+</section>
+
+
+
