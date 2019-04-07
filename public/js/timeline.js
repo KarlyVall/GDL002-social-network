@@ -12,7 +12,12 @@ const saveComent = () => {
       email: user.email,
     })
       .then(function (docRef) {
+
+        document.querySelector('#article').value= '';
+        document.querySelector('#categorieArticle').value = '';
         console.log("Document written with ID: ", docRef.id);
+        consult();
+
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
@@ -23,13 +28,12 @@ const saveComent = () => {
 //Read user data (Email and Name)
 let userData = () => {
 let tableDocUser = document.querySelector('#userInformation');
-console.log(tableDocUser);
 let user = firebase.auth().onAuthStateChanged(function (user) {
   let docRef = db.collection("usuarios").doc(user.uid);
   docRef.get().then(function (doc) {
     if (doc.exists) {
-      console.log("Estoy viendo user");
-      console.log("Document data:", doc.data());
+      // console.log("Estoy viendo user");
+      // console.log("Document data:", doc.data());
       tableDocUser.innerHTML = `
       <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
       <p class="cell small-9 user-name">${doc.data().nameUser}<br>${doc.data().emailUser}</p>`
@@ -88,14 +92,13 @@ swalWithBootstrapButtons.fire({
 
 const consult = () => {
   console.log('Ver consult');
-  let tableDoc = document.querySelector('#panelTimeline');
-  
+
+  let tableDoc = document.querySelector('#timelineUser');
   let user = firebase.auth().onAuthStateChanged(function (user) {
-    db.collection("posts").where("id", "==", user.uid).get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-        //console.log(element.data());
-        //consult(doc);
-        (`${doc.id} => ${doc.data().textuser}`);
+    db.collection("posts").where("id", "==", user.uid).onSnapshot((querySnapshot) => {
+      tableDoc.innerHTML = ' ';
+      querySnapshot.docs.forEach(doc => {
+
         tableDoc.innerHTML += `
     <div class="card">
                <div class="card-section grid-x">
@@ -180,18 +183,21 @@ const editComent = (id, text, article) => {
   let button = document.querySelector('#publicComent');
   button.innerHTML = 'Guardar'
   button.onclick = function () {
-    let washingtonRef = db.collection("posts").doc(id);
+
+    let postUsers = db.collection("posts").doc(id);
+
     let articleEdit = document.querySelector('#categorieArticle').value;
-    let textEdit = document.querySelector('#article').value;
-    
-    return washingtonRef.update({
+    let textEdit = document.querySelector('#article').value.toLowerCase();
+
+    return postUsers.update({
       textuser : textEdit,
       typeArticle : articleEdit,
     })
     .then(function() {
        console.log("Document successfully updated!");
        document.querySelector('#article').value= '';
-       button.innerHTML = 'Publicar'
+       document.querySelector('#categorieArticle').value = '';
+       //button.innerHTML = 'Publicar'
        saveComent()
     })
     .catch(function(error) {
