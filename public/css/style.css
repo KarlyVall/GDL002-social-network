@@ -1,3 +1,13 @@
+.bg-img-access{
+  background: url(../img/bg-access-screen.png);
+  width: 100%;
+  height: 100vh;
+  vertical-align: middle;
+  background-position-x: 10%;
+  background-position-y: 40%;
+  background-size: cover;
+  padding-top: 5%;
+}
 .invisible {
   display: none;
 }
@@ -191,13 +201,13 @@ footer{
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #f0b3ac;
+  color: #ffffff;
 
 }
 
 .sign-in-form label {
   text-transform: uppercase;
-  color: #adadad;
+  color: #ffffff;
   letter-spacing: 1px;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -228,14 +238,23 @@ footer{
   width: 100%;
   padding: 1rem;
   transition: all ease .4s;
-  background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+  -moz-box-shadow: 0 0px 6px 6px #00000021;
+    -webkit-box-shadow: 0 0px 6px 6px #00000021;
+    box-shadow: 0 0px 6px 6px #00000021;
 }
 
 .sign-in-form-button:hover {
   background-color: #44c8ed;
   border-color: #44c8ed;
 }
-
+.imput-round{
+  border-radius: 10px;
+  -moz-box-shadow: 0 0px 6px 6px #00000021;
+  -webkit-box-shadow: 0 0px 6px 6px #00000021;
+  box-shadow: 0 0px 6px 6px #00000021;
+  font-family: 'Montserrat';
+}
 .text-upper {
   text-transform: uppercase;
   letter-spacing: 1px;
