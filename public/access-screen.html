@@ -1,34 +1,41 @@
 <section class="bg-img-access">
-    <img class="access-screen-img" src="img/img-logo-white.png" />
-    <div class="sign-in-form">
-        <h4 class="text-center">Inicia sesión</h4>
-        <label for="sign-in-form-username">Usuario o Email</label>
-        <input class="imput-round" type="text" id="new-email" placeholder="Tu correo" />
-        <label for="sign-in-form-password">Contraseña</label>
-        <input class="imput-round" type="password" id="new-password" placeholder="Tu contraseña" />
+    <div class="grid-x">
+        <div class="cell large-4 show-for-medium-up"></div>
 
-        <button onclick="login()" type="submit" class="sign-in-form-button button-app-white"><a class="button-app-white"
-                href="#home-app-newsfeed">Ingresar</a></button>
-    </div>
+        <div class="cell large-4">
+            <img class="access-screen-img" src="img/img-logo-white.png" />
+            <div class="sign-in-form">
+                <h4 class="text-center">Inicia sesión</h4>
+                <label for="sign-in-form-username">Usuario o Email</label>
+                <input class="imput-round" type="text" id="new-email" placeholder="Tu correo" />
+                <label for="sign-in-form-password">Contraseña</label>
+                <input class="imput-round" type="password" id="new-password" placeholder="Tu contraseña" />
 
-    <div class="text-center text-upper"><span class="bold-font">Ó inicia sesión con</span></div>
-    <div id="wrapper">
-        <span class="text-center">
-            <button onclick="authAccountFacebook()" type="button" class="button social facebook">
-                <i class="fab fa-facebook fa-lg"></i>
-            </button>
-            <button onclick="loginGoogle()" type="button" class="button social google-plus">
-                <i class="fab fa-google fa-lg"></i>
-            </button>
-    </div>
-    <div class="text-center"><span>¿No tienes cuenta? <a href="#register-screen">Crea una aquí</a></span></div>
+                <button onclick="login()" type="submit" class="sign-in-form-button button-app-white"><a
+                        class="button-app-white" href="#home-app-newsfeed">Ingresar</a></button>
+            </div>
 
-    <div id="navbar" style="display:none;">
-        <a href="#access-screen">Iniciar sesión</a>
-        <a href="#register-screen">Registrarse</a>
-        <a href="#home-app-newsfeed">Newsfeed</a>
-        <a href="#timeline-app">Timeline</a>
-        <a href="#access-screen">Salir</a>
+            <div class="text-center text-upper"><span class="bold-font">Ó inicia sesión con</span></div>
+            <div id="wrapper">
+                <span class="text-center">
+                    <button onclick="authAccountFacebook()" type="button" class="button social facebook">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </button>
+                    <button onclick="loginGoogle()" type="button" class="button social google-plus">
+                        <i class="fab fa-google fa-lg"></i>
+                    </button>
+            </div>
+            <div class="text-center"><span>¿No tienes cuenta? <a href="#register-screen">Crea una aquí</a></span></div>
+
+            <div id="navbar" style="display:none;">
+                <a href="#access-screen">Iniciar sesión</a>
+                <a href="#register-screen">Registrarse</a>
+                <a href="#home-app-newsfeed">Newsfeed</a>
+                <a href="#timeline-app">Timeline</a>
+                <a href="#access-screen">Salir</a>
+            </div>
+        </div>
+        <div class="cell large-4 show-for-medium-up"></div>
     </div>
     <!--Mobile Menu-->
     <!-- <section id="mobile-menu">

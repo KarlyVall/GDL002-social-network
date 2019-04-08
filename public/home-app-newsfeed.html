@@ -2,35 +2,43 @@
 <div id="title-bar-menu" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
 </div>
 <!-- like button-->
-      <div id="fb-root"></div>
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1">
-      </script> 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+   src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1">
+   </script>
 
 <ul class="tabs grid-x" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
    data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
    <li class="tabs-title is-active cell small-6"><a href="#panelToSell" aria-selected="true">Venta</a></li>
    <li class="tabs-title cell small-6"><a href="#panelToDonate">Donación</a></li>
 </ul>
-<!-- Mobile-->
-<!-- Tabs for newsfeed, Vender o Donar -->
+<div class="grid-x">
+   <div class="cell large-3 show-for-medium-up"></div>
+   <div class="cell large-6">
 
-<div class="tabs-content" data-tabs-content="deeplinked-tabs">
-   <!-- Tab Vender -->
-   <div class="tabs-panel is-active" id="panelToSell">
-      <!-- Posts timeline selling -->
+      <!-- Mobile-->
+      <!-- Tabs for newsfeed, Vender o Donar -->
+
+      <div class="tabs-content" data-tabs-content="deeplinked-tabs">
+         <!-- Tab Vender -->
+         <div class="tabs-panel is-active" id="panelToSell">
+            <!-- Posts timeline selling -->
+         </div>
+         <!-- Tab Donar -->
+         <div class="tabs-panel" id="panelToDonate">
+            <!-- Posts timeline donating -->
+         </div>
+      </div>
    </div>
-   <!-- Tab Donar -->
-   <div class="tabs-panel" id="panelToDonate">
-      <!-- Posts timeline donating -->
-   </div>
+   <div class="cell large-3 show-for-medium-up"></div>
 </div>
 
 <div id="navbar" style="display:none;">
-      <a href="#access-screen">Iniciar sesión</a>
-      <a href="#register-screen">Registrarse</a>
-      <a href="#home-app-newsfeed" onclick="newsFeedJs()">Newsfeed</a>
-      <a href="#timeline-app" onclick="userData(); consult()">Timeline</a>
-      <a href="#access-screen">Salir</a>
+   <a href="#access-screen">Iniciar sesión</a>
+   <a href="#register-screen">Registrarse</a>
+   <a href="#home-app-newsfeed" onclick="newsFeedJs()">Newsfeed</a>
+   <a href="#timeline-app" onclick="userData(); consult()">Timeline</a>
+   <a href="#access-screen">Salir</a>
 </div>
 <!--Mobile Menu-->
 <section id="mobile-menu">
