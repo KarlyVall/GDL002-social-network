@@ -1,40 +1,44 @@
 <!-- Top color bar with no function -->
 <div id="title-bar-menu" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
 </div>
-
 <ul class="tabs grid-x" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
    data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
    <li class="tabs-title is-active cell small-6"><a href="#panelTimeline" aria-selected="true">Mi Muro</a></li>
    <li class="tabs-title cell small-6"><a href="#panelProducts">Mis Productos</a></li>
 </ul>
-<!-- Mobile-->
-<!-- Tabs for timeline, Vender o Donar -->
-<div class="tabs-content" data-tabs-content="deeplinked-tabs">
-   <!-- Tab Timeline -->
-   <div class="tabs-panel is-active" id="panelTimeline">
-      <!-- To Post -->
-      <div class="card to-post">
+<div class="grid-x">
+   <div class="cell large-3 show-for-medium-up"></div>
+   <div class="cell large-6">
 
-         <div id="userInformation" class="card-section grid-x"></div>
+      <!-- Mobile-->
+      <!-- Tabs for timeline, Vender o Donar -->
+      <div class="tabs-content" data-tabs-content="deeplinked-tabs">
+         <!-- Tab Timeline -->
+         <div class="tabs-panel is-active" id="panelTimeline">
+            <!-- To Post -->
+            <div class="card to-post">
 
-         <div class="grid-x">
-            <textarea id="article" type="text" placeholder="Publica tu producto" style="height: 8em; border-radius: 10px !important;"></textarea>
-            <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
-            <button id="publicComent" onclick="saveComent()"
-               class="button cell small-12 button-app-white">Publicar</button>
+               <div id="userInformation" class="card-section grid-x"></div>
 
+               <div class="grid-x">
+                  <textarea id="article" type="text" placeholder="Publica tu producto"
+                     style="height: 8em; border-radius: 10px !important;"></textarea>
+                  <input id="categorieArticle" type="text" placeholder="¿Vender ó Donar?"><br>
+                  <button id="publicComent" onclick="saveComent()"
+                     class="button cell small-12 button-app-white">Publicar</button>
+
+               </div>
+            </div>
          </div>
+         <!-- Post in timeline -->
+         <section id="timelineUser">
+
+         </section>
       </div>
-   </div>
-   <!-- Post in timeline -->
-   <section id="timelineUser">
 
-   </section>
-</div>
-
-<!-- Tabs Mis productos (siguiente iteración) -->
-<div class="tabs-panel" id="panelProducts">
-   <!-- Posts timeline
+      <!-- Tabs Mis productos (siguiente iteración) -->
+      <div class="tabs-panel" id="panelProducts">
+         <!-- Posts timeline
             <div class="card">
                <div class="card-section grid-x">
                   <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
@@ -47,7 +51,11 @@
                   <a href="about.html" class="button cell small-12">Publicar</a>
                </div>
             </div> -->
-</div>
+      </div>
+
+   </div>
+   <div class="cell large-3 show-for-medium-up"></div>
+
 </div>
 <div id="navbar" style="display:none;">
    <a href="#access-screen">Iniciar sesión</a>
