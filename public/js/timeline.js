@@ -35,8 +35,8 @@ let user = firebase.auth().onAuthStateChanged(function (user) {
       // console.log("Estoy viendo user");
       // console.log("Document data:", doc.data());
       tableDocUser.innerHTML = `
-      <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
-      <p class="cell small-9 user-name">${doc.data().nameUser}<br>${doc.data().emailUser}</p>`
+      <img class="cell small-2 profile-pic" src="img/img-profile-baby-warm.png">
+      <p class="cell small-9 user-name"><span class="bold-font" style="color: #f4897a;">${doc.data().nameUser}</span><br><span class="normal-font">${doc.data().emailUser}</span></p>`
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
@@ -46,22 +46,21 @@ let user = firebase.auth().onAuthStateChanged(function (user) {
   })
 })
 }
-
+//Sweet alert for delete comments
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
     confirmButton: 'btn btn-success',
     cancelButton: 'btn btn-danger'
-  },
-  buttonsStyling: false,
+  }
 });
 
 let deleteSweet = (id) => {    
 swalWithBootstrapButtons.fire({
-  title: 'Seguro que deseas eliminarlo?',
+  title: '¿Eliminar Post?',
   type: 'warning',
   showCancelButton: true,
-  confirmButtonText: 'Si',
-  cancelButtonText: 'No',
+  confirmButtonText: 'Si, eliminar',
+  cancelButtonText: 'Cancelar',
   reverseButtons: true
 }).then((result) => {
   if (result.value) {
@@ -102,8 +101,8 @@ const consult = () => {
         tableDoc.innerHTML += `
     <div class="card">
                <div class="card-section grid-x">
-                  <img class="cell small-2 profile-pic" src="img/img-profile-baby.png">
-                  <p class="cell small-9 user-name">Nombre del Usuario<br>${doc.data().typeArticle}</p>
+                  <img class="cell small-2 profile-pic" src="img/img-profile-baby-warm.png">
+                  <p class="cell small-9 user-name"><span class="bold-font" style="color: #f4897a;">Nombre del Usuario</span><br><span class="normal-font">${doc.data().typeArticle}</span></p>
                   <p class="cell small-1 see-more"><i class="fas fa-ellipsis-v fa-lg"></i></p>
                </div>
                <div class="grid-x">
@@ -112,7 +111,9 @@ const consult = () => {
                <div class="grid-x">
                <button type="button" class="alert button" onclick = "deleteSweet('${doc.id}')"> Eliminar</button>
               <button type="button" class="success button" onclick = "editComent('${doc.id}','${doc.data().textuser}','${doc.data().typeArticle}')"> Editar </button>
-            </div>`
+              <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=119&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId=559193874569574" width="119" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            `
       });
 
     })
