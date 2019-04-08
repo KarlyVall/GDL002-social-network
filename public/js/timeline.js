@@ -109,10 +109,13 @@ const consult = () => {
                 <span class="cell small-12 post-text">${doc.data().textuser}</span>
                </div>
                <div class="grid-x">
-               <button type="button" class="alert button" onclick = "deleteSweet('${doc.id}')"> Eliminar</button>
-              <button type="button" class="success button" onclick = "editComent('${doc.id}','${doc.data().textuser}','${doc.data().typeArticle}')"> Editar </button>
+               <button type="button" class="button-grad-delete button" style="margin-right: 1em;" onclick = "deleteSweet('${doc.id}')"><i class="far fa-trash-alt"></i> Eliminar</button>
+              <button type="button" class="button-grad-edit button" onclick = "editComent('${doc.id}','${doc.data().textuser}','${doc.data().typeArticle}')"><i class="far fa-edit"></i> Editar </button>
+              </div>
+              <div class="grid-x">
               <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=119&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId=559193874569574" width="119" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-            </div>
+              </div>
+    </div>
             `
       });
 

@@ -17,9 +17,10 @@ const newsFeedJs = () => {
          <div class="grid-x">
             <span class="cell small-12 post-text">${doc.data().textuser}</span>
          </div>
-         <!--like button-->
-         <div class="fb-like" data-href="https://compartiendo-sonrisas.firebaseio.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false">
-         </div>
+         <br>
+         <div class="grid-x">
+              <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=119&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId=559193874569574" width="119" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+              </div>
       </div>
       `
   });
