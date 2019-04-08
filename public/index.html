@@ -9,7 +9,7 @@
 
    <link rel="icon" href="img/favicon.ico">
    <!--google fonts-->
-   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
    <!-- Font Awesome Icons -->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -30,62 +30,28 @@
 
 <body>
    <main id="content">
-      <!-- like botton
-      <div id="fb-root"></div>
-      <script async defer crossorigin="anonymous"
-         src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2&appId=559193874569574&autoLogAppEvents=1"></script> -->
-      <!-- Desktop Menu-->
-      <!-- Sticky Menu-->
-      <!-- <div class="hide-for-small-only hide-for-medium-only" data-sticky-container>
-         <div class="top-bar" data-sticky data-margin-top="0" id="example-menu">
-            <div class="top-bar-left">
-               <ul class="menu">
-                  <li class="menu-text">Site Title</li>
-               </ul>
-            </div>
-            <div class="top-bar-right">
-               <ul class="menu" data-magellan>
-                  <li><a href="#first">One</a></li>
-                  <li><a href="#second">Two</a></li>
-                  <li><a href="#third">Three</a></li>
-               </ul>
-            </div>
-         </div>
-      </div> -->
-      <!-- Desktop Content-->
-      <!-- Add content where magellan will be linked -->
-      <!-- <div class="sections hide-for-small-only hide-for-medium-only">
-         <section id="first" data-magellan-target="first"></section>
-         <section id="second" data-magellan-target="second"></section>
-         <section id="third" data-magellan-target="third"></section>
-      </div> -->
-
-      <!-- Mobile logo bar-->
-      <!-- Sticky bar-->
-      <!-- <div id="title-bar-menu" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
-   </div> -->
-
-      <!-- Mobile ACCESS SCREEN HASH-->
+      <!-- Mobile access screen hash #1-->
       <section id="access-screen">
 
       </section>
-      <!-- Mobile create new account-->
+
+      <!-- Mobile create new account (Register) hash #1.1-->
       <section id="register-screen">
 
       </section>
 
-
-      <!-- Mobile HOME NEWSFEED 1# HASH-->
+      <!-- Mobile home newsfedd hash #2-->
       <section id="home-app-newsfeed">
 
       </section>
 
-      <!-- Mobile TIMELINE HASH-->
+      <!-- Mobile timeline hash #3-->
       <section id="timeline-app">
 
 
       </section>
 
+      <!-- Navbar for routing-->
       <div id="navbar" style="display:none;">
          <a href="#access-screen">Iniciar sesión</a>
          <a href="#register-screen">Registrarse</a>
@@ -113,9 +79,9 @@
             <button class="footer-link"><span class='footer-text'>Salir</span><br><i
                   class="fas fa-sign-out-alt fa-2x"></i></button>
          </footer>
-
       </section>
    </main>
+
    <!-- Scripts-->
    <!-- Firebase App is always required and must be first -->
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
@@ -124,11 +90,11 @@
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
    <!-- Local scripts -->
-   <!--Sweet alerts-->
+   <!--Sweet alert script-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-   <!--Scripts de Firebase-->
+   <!--Firebase Scripts-->
    <script src="js/firebase-initialize.js"></script>
    <script src="js/create-new-account.js"></script>
    <script src="js/login-users.js"></script>
@@ -141,7 +107,7 @@
    <script src="js/vendor/what-input.js"></script>
    <script src="js/vendor/foundation.js"></script>
    <script src="js/app.js"></script>
-   <!-- SPA APK -->
+   <!-- SPA Application -->
    <script src="js/spa.js"></script>
 </body>
 

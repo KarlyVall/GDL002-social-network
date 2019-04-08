@@ -86,9 +86,7 @@ footer{
 /* Username text */
 .user-name{
   padding-left: 4%;
-  font-weight: 500;
-  font-family: Montserrat;
-  color: #6f6f6f;
+    color: #7a737e;
 }
 /* Post text */
 .post-text{
@@ -112,11 +110,12 @@ footer{
 }
 .tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
   background: transparent;
-  color: #fb7f8d;
+  color: #ae6ff7;
   font-size: 1em;
   font-family: Montserrat;
   text-align: center;
-  border-bottom: solid 5px #fb7f8d;
+  border-bottom: solid 5px #bc83ff;
+  font-weight: 700;
 }
 .tabs-title > a {
   display: block;
@@ -136,7 +135,7 @@ footer{
 /*Mobile menu*/
 #title-bar-menu {
   height: 50px;
-  background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  background-image: linear-gradient(120deg, #d5adfc 0%, #69aef3 100%);
 }
 
 
@@ -244,6 +243,37 @@ footer{
 }
 
 #publicComent {
-  background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  background-image: linear-gradient(120deg, #c696f4 0%, #51a5f9 100%);
+  /* background-image: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%); */
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: 'Montserrat';
+}
+.foawe-nav{
+  background: -webkit-linear-gradient(#b26ef4, #4296ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+.swal2-icon.swal2-warning {
+  font-family: inherit;
+  font-size: 1em;
+  margin: .333333em auto .5em;
+}
+.access-screen-img {
+  padding: 2em 2em 0em 2em;
+}
+.button-app-white a {
+  color: #ffffff;
+}
+.to-post{
+  border: solid 3px #cfcfcf;
+}
+.bold-font{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.normal-font{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
