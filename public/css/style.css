@@ -286,3 +286,27 @@ footer{
   font-weight: 400;
   color: #696969;
 }
+
+button.button-grad-delete {
+  border-radius: 100rem;
+    padding: 1rem;
+    font-family: 'Montserrat';
+    font-size: 0.8rem;
+    padding: .7rem;
+    background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+button.button-grad-edit {
+  border-radius: 100rem;
+    padding: 1rem;
+    font-family: 'Montserrat';
+    font-size: 0.8rem;
+    padding: .7rem;
+    background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
