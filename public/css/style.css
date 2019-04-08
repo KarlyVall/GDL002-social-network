@@ -1,5 +1,5 @@
 .bg-img-access{
-  background: url(../img/bg-access-screen.png);
+  background: url(../img/bg-access-screen-purple.png);
   width: 100%;
   height: 100vh;
   vertical-align: middle;
@@ -297,9 +297,9 @@ footer{
   font-weight: 400;
 }
 
-[type=text], textarea {
+[type=color], [type=date], [type=datetime-local], [type=datetime], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], textarea {
   border: 1px solid #cacaca;
-  border-radius: 10px;
+  border-radius: 100em;
   font-family: 'Montserrat';
   font-size: 1rem;
   font-weight: 400;
